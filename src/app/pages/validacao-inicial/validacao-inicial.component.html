@@ -1,0 +1,103 @@
+<div class="po-row">
+    <div class="po-xl-4 po-lg-4  po-md-6 po-sm-12">
+        <po-button p-label="Centralizar Solicitações" (p-click)="verifyItens(modal);">
+        </po-button>
+    </div>
+    <div class="po-offset-lg-4 po-offset-xl-4 po-xl-4 po-lg-4 po-md-6 po-sm-12">
+        <po-search></po-search>
+    </div>
+</div>
+
+<po-table [p-items]="itens"
+    [p-selectable]="true"
+    p-actions-right="true"
+    [p-actions]="actions"
+    [p-columns]="columns">
+
+    <ng-template
+        p-table-row-template
+        let-rowItem
+        let-i="rowIndex">
+
+        <!--<h1>{{rowItem.nSolic}}</h1>-->
+
+        <app-itens-compras></app-itens-compras>
+    </ng-template>
+
+</po-table>
+
+<po-modal #modal p-title="Centralizando Solicitações" [p-primary-action]="confirm" [p-secondary-action]="close">
+    <div class="po-row">
+        <div class="po-xl-3 po-lg-3  po-md-3 po-sm-3">
+            <po-switch name="switch" p-label="Selecionar Fornecedores"> </po-switch>
+        </div>
+        <div class="po-xl-9 po-lg-9  po-md-9 po-sm-9">
+            <po-multiselect name="multiselect" p-label="Fornecedores" [p-options]="options"> </po-multiselect>
+        </div>
+        <div class="po-xl-4 po-lg-4  po-md-4 po-sm-12">
+            <po-input name="input"  p-disabled="true" p-label="Cód Filial Centralizadora"> </po-input>
+        </div>
+        <div class="po-xl-8 po-lg-8  po-md-8 po-sm-12">
+            <label for="" style="font-weight: bolder;font-size: medium;">Nome da Filial Centralizadora</label>
+            <po-search ></po-search>
+        </div>
+
+        <div class="po-xl-12 po-lg-12  po-md-12 po-sm-12">
+            <po-textarea name="textarea" p-label="Justificativa da Centralização"> </po-textarea>
+        </div>
+
+        <div class="po-xl-6 po-lg-6  po-md-6 po-sm-12">
+            <po-select
+                name="select"
+                p-label="Tipo de Compra"
+                [p-options]="[
+    { label: 'Selecione..', value: '' },
+    { label: 'Pedido', value: 'pedido' },
+    { label: 'Contrato', value: 'contrato' }
+  ]">
+            </po-select>
+        </div>
+        <div class="po-xl-6 po-lg-6  po-md-6 po-sm-12">
+            <po-datepicker name="datepicker" p-label="Validade da Cotação">
+            </po-datepicker>
+        </div>
+        <div class="po-xl-12 po-lg-12  po-md-12 po-sm-12">
+            <po-textarea name="textarea" p-label="Resumo"> </po-textarea>
+        </div>
+
+    </div>
+</po-modal>
+
+
+<po-modal #modalAprovacao p-title="Aprovação" [p-primary-action]="confirmAprovacao" >
+    <div class="po-row">
+        <div class="po-xl-3 po-lg-3  po-md-3 po-sm-3">
+            <po-switch name="switch" p-label="Selecionar Fornecedores"> </po-switch>
+        </div>
+        <div class="po-xl-9 po-lg-9  po-md-9 po-sm-9">
+            <po-multiselect name="multiselect" p-label="Fornecedores" [p-options]="options"> </po-multiselect>
+        </div>
+        <div class="po-xl-12 po-lg-12  po-md-12 po-sm-12">
+            <po-textarea name="textarea" p-label="Justificativa para Aprovação/Reprovação"> </po-textarea>
+        </div>
+
+        <div class="po-xl-6 po-lg-6  po-md-6 po-sm-12">
+            <po-select
+                name="select"
+                p-label="Tipo de Compra"
+                [p-options]="[
+    { label: 'Selecione..', value: '' },
+    { label: 'Pedido', value: 'pedido' },
+    { label: 'Contrato', value: 'contrato' }
+  ]">
+            </po-select>
+        </div>
+        <div class="po-xl-6 po-lg-6  po-md-6 po-sm-12">
+            <po-datepicker name="datepicker" p-label="Validade da Cotação">
+            </po-datepicker>
+        </div>
+        <div class="po-xl-12 po-lg-12  po-md-12 po-sm-12">
+            <po-textarea name="textarea" p-label="Resumo"> </po-textarea>
+        </div>
+    </div>
+</po-modal>
