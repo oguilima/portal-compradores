@@ -1,30 +1,50 @@
 <po-tabs>
   <po-tab p-label="Análise por Fornecedor">
-    <po-table [p-items]="fornecedores" [p-columns]="columsFornecedores" p-hide-table-search="false" p-container="shadow"
-      [p-sort]="true" [p-striped]="true">
 
-      <ng-template p-table-row-template let-rowItem let-i="rowIndex">
-        <po-divider p-label="Cotações do Fornecedor"></po-divider>
-        <po-table [p-items]="cotacoes" [p-columns]="columsCotacoes" p-hide-columns-manager="true" p-container="border"
-          [p-sort]="true" [p-striped]="true">
-
-          <ng-template p-table-row-template let-rowItem>
-            <po-divider p-label="Itens da Cotação"></po-divider>
-            <po-table [p-items]="itens" [p-columns]="columsItens" p-hide-columns-manager="true" p-container="border"
-              [p-striped]="true">
-              <ng-template p-table-row-template let-rowItem>
-                <po-divider p-label="Propostas por item"></po-divider>
-                <po-table [p-items]="propostas" [p-columns]="columsPropostas" p-hide-columns-manager="true" p-container="border"
-                  [p-striped]="true">
-                </po-table>
-              </ng-template>
-            </po-table>
-          </ng-template>
-
+    <div class="po-row">
+      <div class="po-xl-10 po-lg-10 po-md-10 po-sm-10">
+        <po-table [p-items]="fornecedores" [p-columns]="columsFornecedores"
+          p-hide-table-search="false" p-container="shadow"
+          [p-sort]="true" [p-striped]="true" [p-actions]="actions"
+          p-actions-right="true">
         </po-table>
-      </ng-template>
+      </div>
+      <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2 align-all-center">
+        <div class="po-row">
+            <po-widget
+              class="po-lg-12 po-mt-12"
+              p-title="Total Fornecedores"
+              [p-height]="200">
+              <div class="po-font-subtitle po-text-center">4</div>
+              <div class="po-text-center">Last updated at 08:20</div>
+            </po-widget>
+        </div>
+      </div>
+    </div>
 
-    </po-table>
+    <po-divider></po-divider>
+
+    <div class="po-row">
+      <div class="po-xl-10 po-lg-10 po-md-10 po-sm-10">
+        <po-table [p-items]="cotacoes" [p-columns]="columsCotacoes"
+          p-hide-table-search="false" p-container="shadow"
+          [p-sort]="true" [p-striped]="true" [p-actions]="actionsCotacao"
+          p-actions-right="true">
+        </po-table>
+      </div>
+      <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2 align-all-center">
+        <div class="po-row">
+          <po-widget
+            class="po-lg-12 po-mt-12"
+            p-title="Total Cotações"
+            [p-height]="200">
+            <div class="po-font-subtitle po-text-center">5</div>
+            <div class="po-text-center">Last updated at 08:20</div>
+          </po-widget>
+        </div>
+      </div>
+    </div>
+
   </po-tab>
   <po-tab p-label="Análise por Produto">
 
@@ -35,48 +55,3 @@
 </po-tabs>
 
 <po-divider></po-divider>
-
-<div class="po-row">
-  <div class="po-xl-4 po-lg-4 po-md-6 po-sm-12">
-    <po-button p-label="Exportar em Excel" p-icon="ph ph-export">
-    </po-button>
-  </div>
-</div>
-
-<po-modal #gerenciarProposta p-title="Gerenciar Proposta" [p-primary-action]="save" [p-secondary-action]="close"
-  p-icon="ph ph-gear">
-  <po-tabs>
-    <po-tab p-label="Validação de Proposta">
-      <div class="po-row">
-        <div class="po-xl-4 po-lg-4 po-md-6 po-sm-6">
-          <po-radio-group name="radioAprovacao" p-label="Prosposta Validada?  " [p-options]="[
-                                                                                          { label: 'Sim', value: 'sim' },
-                                                                                          { label: 'Não', value: 'nao' }
-                                                                                        ]">
-          </po-radio-group>
-        </div>
-      </div>
-    </po-tab>
-    <po-tab p-label="Alterar Dados">
-      <div class="po-row">
-        <div class="po-xl-4 po-lg-4 po-md-6 po-sm-6">
-          <po-datepicker name="dataVencimento" p-label="Data de Vencimento"></po-datepicker>
-        </div>
-      </div>
-    </po-tab>
-  </po-tabs>
-</po-modal>
-
-<po-modal #parecer p-title="Parecer" p-icon="ph ph-checks">
-  <po-table [p-items]="itensParecer" [p-columns]="columsParecer" p-hide-table-search="false">
-    <ng-template p-table-row-template let-rowItem let-i="rowIndex">
-      <po-table [p-items]="itensAnexos" [p-columns]="columsAnexos" p-hide-columns-manager="true">
-      </po-table>
-    </ng-template>
-  </po-table>
-</po-modal>
-
-<po-modal #anexos p-title="Anexos" p-icon="ph ph-paperclip">
-  <po-table [p-items]="itensAnexos" [p-columns]="columsAnexos" p-hide-columns-manager="true">
-  </po-table>
-</po-modal>

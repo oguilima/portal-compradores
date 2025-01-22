@@ -6,12 +6,16 @@ import {
   PoButtonModule, PoSearchModule,
   PoModalAction, PoModalComponent,
   PoTabsModule, PoDividerModule,
+  PoWidgetModule, PoStepperModule
+   
 } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-avalicao-propostas',
   standalone: true,
-  imports: [PoTableModule, PoButtonModule, PoSearchModule, PoModalModule, PoFieldModule, PoTabsModule, PoDividerModule],
+  imports: [PoTableModule, PoButtonModule, PoSearchModule, PoModalModule, PoFieldModule, PoTabsModule, PoDividerModule,
+    PoWidgetModule 
+  ],
   templateUrl: './avalicao-propostas.component.html',
   styleUrl: './avalicao-propostas.component.css'
 })
@@ -19,6 +23,7 @@ export class AvalicaoPropostasComponent {
   @ViewChild('gerenciarProposta') gerenciarProposta!: PoModalComponent;
   @ViewChild('parecer') parecer!: PoModalComponent;
   @ViewChild('anexos') anexos!: PoModalComponent;
+  
 
   constructor(private utilsService: UtilsService) {
   }
@@ -63,6 +68,35 @@ export class AvalicaoPropostasComponent {
       TipoFornec: 'J'
     }
   ];
+
+
+
+
+  actions: Array<PoTableAction> = [
+    { action: this.details.bind(this),  label: 'Detalhes' },
+  ]
+
+  actionsCotacao: Array<PoTableAction> = [
+    { action: this.detailsCotacao.bind(this), icon: 'ph ph-pencil',  label: 'Editar' },
+    { action: this.detailsCotacao.bind(this),  icon: 'ph ph-eye', label: 'Detalhes' },
+  ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
   columsCotacoes = [
     { property: 'nSC', label: "N° SC" },
@@ -113,22 +147,6 @@ export class AvalicaoPropostasComponent {
       tipoDoc: "Pedido",
       dtValidade: "15/03/2024",
       valorF: "R$ 10.000,00"
-    },
-    {
-      nSC: 1006,
-      filial: "Fortaleza",
-      nC: 5006,
-      tipoDoc: "Nota Fiscal",
-      dtValidade: "20/04/2024",
-      valorF: "R$ 33.600,00"
-    },
-    {
-      nSC: 1007,
-      filial: "Porto Alegre",
-      nC: 5007,
-      tipoDoc: "Orçamento",
-      dtValidade: "12/02/2024",
-      valorF: "R$ 4.500,00"
     }
   ];
 
@@ -450,13 +468,7 @@ export class AvalicaoPropostasComponent {
     }
   ];
 
-  actions: Array<PoTableAction> = [
-    { action: this.notifySupplierMail.bind(this), icon: 'ph ph-envelope', label: 'Notificar Fornecedor' },
-    { action: this.manageProposal.bind(this), icon: 'ph ph-gear', label: 'Gerenciar Proposta' },
-    { action: this.openRequest.bind(this), icon: 'ph ph-clipboard-text', label: 'Pedido' },
-    { action: this.technicalOpinion.bind(this), icon: 'ph ph-list-checks', label: 'Parecer' },
-    { action: this.openAttachments.bind(this), icon: 'ph ph-paperclip', label: 'Anexos' }
-  ];
+
 
 
   //Parecer
@@ -556,6 +568,18 @@ export class AvalicaoPropostasComponent {
       anexo: ['download']
     }
   ]
+
+
+
+
+
+  details(){
+
+  }
+
+  detailsCotacao(){
+  
+  }
 
   openAttachments(line: any) {
     this.anexos.open();

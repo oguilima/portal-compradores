@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --color-brand-01-base: #294693;
-    --color-brand-02-base: #FEE120;
+    --color-brand-02-base: #575654b2;
     --color-brand-03-base: #294693;
+
+    --color-brand-01-darkest: #294693;
+    --color-brand-01-lighter: #b4c3eb;
+    --color-brand-01-light: #b4c3eb;
+    --color-brand-01-lightest: #b4c3eb;
+    --color-action-pressed: #363f55;
 }
