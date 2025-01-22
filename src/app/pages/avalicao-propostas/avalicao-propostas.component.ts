@@ -6,16 +6,16 @@ import {
   PoButtonModule, PoSearchModule,
   PoModalAction, PoModalComponent,
   PoTabsModule, PoDividerModule,
-  PoWidgetModule, PoStepperModule
+  PoWidgetModule
    
 } from '@po-ui/ng-components';
+import { CardCotacaoComponent } from "../../components/card-cotacao/card-cotacao.component";
 
 @Component({
   selector: 'app-avalicao-propostas',
   standalone: true,
   imports: [PoTableModule, PoButtonModule, PoSearchModule, PoModalModule, PoFieldModule, PoTabsModule, PoDividerModule,
-    PoWidgetModule 
-  ],
+    PoWidgetModule, CardCotacaoComponent],
   templateUrl: './avalicao-propostas.component.html',
   styleUrl: './avalicao-propostas.component.css'
 })
@@ -23,6 +23,7 @@ export class AvalicaoPropostasComponent {
   @ViewChild('gerenciarProposta') gerenciarProposta!: PoModalComponent;
   @ViewChild('parecer') parecer!: PoModalComponent;
   @ViewChild('anexos') anexos!: PoModalComponent;
+  @ViewChild('modalCotacoes') modalCotacoes!: PoModalComponent;
   
 
   constructor(private utilsService: UtilsService) {
@@ -578,7 +579,7 @@ export class AvalicaoPropostasComponent {
   }
 
   detailsCotacao(){
-  
+    this.modalCotacoes.open()
   }
 
   openAttachments(line: any) {
