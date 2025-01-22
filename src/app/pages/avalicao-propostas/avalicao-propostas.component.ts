@@ -79,23 +79,6 @@ export class AvalicaoPropostasComponent {
     { action: this.detailsCotacao.bind(this), icon: 'ph ph-eye', label: 'Detalhes' },
   ]
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> cda743a3b33b9bae5a400149a652e0380b8a872d
   columsCotacoes = [
     { property: 'nSC', label: "N° SC" },
     { property: 'filial', label: "Filial" },
@@ -148,8 +131,6 @@ export class AvalicaoPropostasComponent {
     }
   ];
 
-<<<<<<< HEAD
-=======
   columsItens = [
     { property: 'produto', label: "Produto" },
     { property: 'descricao', label: "Descrição" },
@@ -294,7 +275,6 @@ export class AvalicaoPropostasComponent {
     }
   ];
 
->>>>>>> cda743a3b33b9bae5a400149a652e0380b8a872d
   //Visao Produto
   columsProdutos = [
     { property: 'codProduto', label: "Código" },
@@ -331,8 +311,6 @@ export class AvalicaoPropostasComponent {
     }
   ]
 
-<<<<<<< HEAD
-=======
   columsItensFornecedores = [
     { property: 'codFornec', label: "Código" },
     { property: 'nameFornec', label: "Fornecedor" },
@@ -575,15 +553,10 @@ export class AvalicaoPropostasComponent {
 
 
 
->>>>>>> cda743a3b33b9bae5a400149a652e0380b8a872d
   details(){
 
   }
 
-<<<<<<< HEAD
-  detailsCotacao(element: any){
-    console.log(element)
-=======
   confirmCotacao(){
 
   }
@@ -593,7 +566,6 @@ export class AvalicaoPropostasComponent {
   }
 
   detailsCotacao() {
->>>>>>> cda743a3b33b9bae5a400149a652e0380b8a872d
     this.modalCotacoes.open()
   }
 
