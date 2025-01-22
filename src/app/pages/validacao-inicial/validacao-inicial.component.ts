@@ -9,9 +9,6 @@ import {
   PoMultiselectOption 
 } from '@po-ui/ng-components';
 
-
-
-
 @Component({
   selector: 'app-validacao-inicial',
   standalone: true,

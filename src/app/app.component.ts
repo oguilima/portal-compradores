@@ -31,13 +31,13 @@ export class AppComponent {
       icon: 'ph ph-shopping-cart-simple',
       shortLabel: 'Aquisições',
       subItems: [
-        { label: 'Cotações', action: this.getMenuAction('/'), badge: { value: 12 } },
+        { label: 'Cotações', action: this.getMenuAction('/cotacoes'), badge: { value: 12 } },
         { label: 'Negociações', action: this.getMenuAction('/'), badge: { value: 8 } }
       ]
     },
     {
       label: 'Avaliação de Propostas',
-      action: this.getMenuAction('/'),
+      action: this.getMenuAction('/avaliacaoPropostas'),
       icon: 'ph ph-currency-dollar',
       shortLabel: 'Avaliação de Propostas',
       badge: { value: 5 }
