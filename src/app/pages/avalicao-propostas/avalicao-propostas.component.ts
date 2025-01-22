@@ -7,7 +7,7 @@ import {
   PoModalAction, PoModalComponent,
   PoTabsModule, PoDividerModule,
   PoWidgetModule
-   
+
 } from '@po-ui/ng-components';
 import { CardCotacaoComponent } from "../../components/card-cotacao/card-cotacao.component";
 
@@ -24,6 +24,8 @@ export class AvalicaoPropostasComponent {
   @ViewChild('parecer') parecer!: PoModalComponent;
   @ViewChild('anexos') anexos!: PoModalComponent;
   @ViewChild('modalCotacoes') modalCotacoes!: PoModalComponent;
+  @ViewChild('modalEditCotacao') modalEditCotacao!: PoModalComponent;
+
   
 
   constructor(private utilsService: UtilsService) {
@@ -74,12 +76,12 @@ export class AvalicaoPropostasComponent {
 
 
   actions: Array<PoTableAction> = [
-    { action: this.details.bind(this),  label: 'Detalhes' },
+    { action: this.details.bind(this), label: 'Detalhes' },
   ]
 
   actionsCotacao: Array<PoTableAction> = [
-    { action: this.detailsCotacao.bind(this), icon: 'ph ph-pencil',  label: 'Editar' },
-    { action: this.detailsCotacao.bind(this),  icon: 'ph ph-eye', label: 'Detalhes' },
+    { action: this.editCotacao.bind(this), icon: 'ph ph-pencil', label: 'Editar' },
+    { action: this.detailsCotacao.bind(this), icon: 'ph ph-eye', label: 'Detalhes' },
   ]
 
 
@@ -96,9 +98,6 @@ export class AvalicaoPropostasComponent {
 
 
 
-
-
-    
   columsCotacoes = [
     { property: 'nSC', label: "N° SC" },
     { property: 'filial', label: "Filial" },
@@ -214,7 +213,7 @@ export class AvalicaoPropostasComponent {
     { property: 'condPag', label: "Condição de pagamento" },
     { property: 'obsFornec', label: "Observação do Fornec." }
   ];
-  
+
   propostas = [
     {
       quantidadeCotada: 10,
@@ -294,7 +293,7 @@ export class AvalicaoPropostasComponent {
       obsFornec: "Inclui suporte técnico gratuito por 6 meses."
     }
   ];
-  
+
   //Visao Produto
   columsProdutos = [
     { property: 'codProduto', label: "Código" },
@@ -573,12 +572,19 @@ export class AvalicaoPropostasComponent {
 
 
 
-
   details(){
 
   }
 
-  detailsCotacao(){
+  confirmCotacao(){
+
+  }
+
+  editCotacao() {
+    this.modalEditCotacao.open()
+  }
+
+  detailsCotacao() {
     this.modalCotacoes.open()
   }
 

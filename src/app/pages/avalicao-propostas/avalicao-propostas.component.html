@@ -11,13 +11,13 @@
       </div>
       <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2 align-all-center">
         <div class="po-row">
-            <po-widget
-              class="po-lg-12 po-mt-12"
-              p-title="Total Fornecedores"
-              [p-height]="200">
-              <div class="po-font-subtitle po-text-center">4</div>
-              <div class="po-text-center">Last updated at 08:20</div>
-            </po-widget>
+          <po-widget
+            class="po-lg-12 po-mt-12"
+            p-title="Total Fornecedores"
+            [p-height]="200">
+            <div class="po-font-subtitle po-text-center">4</div>
+            <div class="po-text-center">Last updated at 08:20</div>
+          </po-widget>
         </div>
       </div>
     </div>
@@ -56,11 +56,25 @@
 
 <po-divider></po-divider>
 
-
+<po-modal #modalEditCotacao p-title="Editando Cotação" p-size="md">
+  <po-datepicker name="datepicker" p-label="Data de Validade"> </po-datepicker>
+  <po-modal-footer [p-disabled-align]="false">
+    <po-button p-kind="primary" p-label="Confirmar"
+      (p-click)="confirmCotacao()"> </po-button>
+  </po-modal-footer>
+</po-modal>
 
 <po-modal #modalCotacoes p-title="Cotações Fornecedor XPTO" p-size="xl">
 
   <app-card-cotacao></app-card-cotacao>
 
+  <po-modal-footer>
+    <po-button p-label="Ver Solicitação da Compra" p-icon="ph ph-eye"> </po-button>
+    <po-button p-label="Ver todos Anexos" p-icon="ph ph-eye"> </po-button>
+    <po-button p-label="Verificar Parecer Técnico" p-icon="ph ph-hard-hat">
+    </po-button>
+    <po-button p-label="Gerar Excel" p-kind="primary" p-icon="ph ph-download">
+    </po-button>
+  </po-modal-footer>
 
 </po-modal>
