@@ -3,10 +3,8 @@ export interface Proposta {
     nProposta : string;
     condPag : string;
     tipoFrete: string;
-    qtdEntregueFornec: number;
     dtPrevEntrega: string;
-    valorFrete: number;
-    valorUn: number;
-    valorT: number;
+    valorTotalFrete: number;
+    valorFinal: number;
     vencedora: boolean;
 }
