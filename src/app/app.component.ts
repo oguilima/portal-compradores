@@ -20,13 +20,6 @@ export class AppComponent {
   menus: Array<PoMenuItem> = [
     { label: 'Home', action: this.getMenuAction('/'), icon: 'ph ph-house', shortLabel: 'Home' },
     {
-      label: 'Validação Inicial',
-      action: this.getMenuAction('/validacaoInicial'),
-      icon: 'ph ph-check',
-      shortLabel: 'Validação Inicial',
-      badge: { value: 4 }
-    },
-    {
       label: 'Acompanhamento',
       icon: 'ph ph-shopping-cart-simple',
       shortLabel: 'Aquisições',
@@ -34,19 +27,30 @@ export class AppComponent {
         { label: 'Cotações', action: this.getMenuAction('/cotacoes'), badge: { value: 12 } },
         { label: 'Negociações', action: this.getMenuAction('/'), badge: { value: 8 } }
       ]
-    },
-    {
+    }, {
+      label: 'Validação Inicial',
+      action: this.getMenuAction('/validacaoInicial'),
+      icon: 'ph ph-check',
+      shortLabel: 'Validação Inicial',
+      badge: { value: 4 }
+    }, {
+      label: 'Controle de Cotações',
+      action: this.getMenuAction('/controleCotacao'),
+      icon: 'ph ph-flag',
+      shortLabel: 'Avaliação de Propostas',
+      badge: { value: 5 }
+    }
+    , {
       label: 'Avaliação de Propostas',
       action: this.getMenuAction('/avaliacaoPropostas'),
       icon: 'ph ph-currency-dollar',
-      shortLabel: 'Avaliação de Propostas',
-      badge: { value: 5 }
+      shortLabel: 'Avaliação de Propostas'
     }
   ];
 
   constructor(public samplePoMenuHumanResourcesService: SamplePoMenuHumanResourcesService,
     private router: Router
-  ) {}
+  ) { }
 
   getMenuAction(link: string) {
     return (menu: PoMenuItem) => this.printMenuAction(menu, link);

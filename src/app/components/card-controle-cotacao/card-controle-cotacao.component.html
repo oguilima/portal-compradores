@@ -1,0 +1,64 @@
+<po-list-view
+    p-property-title="name"
+    [p-items]="dados">
+    <ng-template p-list-view-content-template let-item>
+        <div class="po-row">
+            <div class="po-md-12">
+                <div class="po-row">
+                    <po-info class="po-md-2" p-label="Data Solicitação"
+                        [p-value]="item.dataSolic"></po-info>
+                    <po-info class="po-md-2" p-label="Nº SC"
+                        [p-value]="item.numSc"></po-info>
+                    <po-info class="po-md-2" p-label="Nº Cotação"
+                        [p-value]="item.numCot"></po-info>
+                    <po-info class="po-md-2" p-label="Filial"
+                        [p-value]="item.filial"></po-info>
+                    <po-info class="po-md-2" p-label="Validade"
+                        [p-value]="item.validadeProposta"></po-info>
+                </div>
+            </div>
+        </div>
+
+        <po-divider></po-divider>
+
+        <div class="po-row">
+            <div class="po-md-10">
+                <po-table [p-items]="itensCotacao" [p-columns]="columsItens"
+                    p-hide-columns-manager="true"
+                    p-container="border"></po-table>
+            </div>
+            <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2">
+                <div class="po-row">
+                    <po-widget class="po-lg-12 po-mt-12"
+                        p-title="Total Itens" [p-height]="200">
+                        <div class="po-font-subtitle po-text-center">4</div>
+                        <div class="po-text-center">Last updated at 08:20</div>
+                    </po-widget>
+                </div>
+            </div>
+        </div>
+
+        <po-divider></po-divider>
+
+        <div class="po-row">
+            <div class="po-md-10">
+                <po-widget>
+                    <po-table [p-items]="itensFornecedores" [p-columns]="columsFornecedores"
+                    p-hide-columns-manager="true"
+                    p-container="border"></po-table>
+                </po-widget>
+            </div>
+            <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2">
+                <div class="po-row">
+                    <po-widget class="po-lg-12 po-mt-12"
+                        p-title="Total Fornecedores" [p-height]="200">
+                        <div class="po-font-subtitle po-text-center">2</div>
+                        <div class="po-text-center">Last updated at 08:20</div>
+                    </po-widget>
+                </div>
+            </div>
+        </div>
+
+    </ng-template>
+
+</po-list-view>
