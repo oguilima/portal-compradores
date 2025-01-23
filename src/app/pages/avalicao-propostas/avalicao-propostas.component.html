@@ -1,6 +1,5 @@
-<po-tabs>
-  <po-tab p-label="Análise por Fornecedor">
-
+<po-tabs #poTab>
+  <po-tab p-label="Análise por Fornecedor" (p-click)="eventEmitter('fornecedor')">
     <div class="po-row">
       <div class="po-xl-10 po-lg-10 po-md-10 po-sm-10">
         <po-table [p-items]="fornecedores" [p-columns]="columsFornecedores" p-hide-table-search="false"
@@ -9,14 +8,7 @@
       </div>
       <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2 align-all-center">
         <div class="po-row">
-<<<<<<< HEAD
           <po-widget class="po-lg-12 po-mt-12" p-title="Total Fornecedores" [p-height]="200">
-=======
-          <po-widget
-            class="po-lg-12 po-mt-12"
-            p-title="Total Fornecedores"
-            [p-height]="200">
->>>>>>> cda743a3b33b9bae5a400149a652e0380b8a872d
             <div class="po-font-subtitle po-text-center">4</div>
             <div class="po-text-center">Last updated at 08:20</div>
           </po-widget>
@@ -41,10 +33,8 @@
         </div>
       </div>
     </div>
-
   </po-tab>
-  <po-tab p-label="Análise por Produto">
-
+  <po-tab p-label="Análise por Produto" (p-click)="eventEmitter('produto')">
     <div class="po-row">
       <div class="po-xl-10 po-lg-10 po-md-10 po-sm-10">
         <po-table [p-items]="produtos" [p-columns]="columsProdutos" p-hide-table-search="false" p-container="shadow"
@@ -78,42 +68,54 @@
         </div>
       </div>
     </div>
-
   </po-tab>
-  <po-tab p-label="Propostas Vencedoras">
+  <po-tab p-label="Propostas Vencedoras" (p-click)="eventEmitter('vencedoras')">
+    <div class="po-row">
+      <div class="po-xl-10 po-lg-10 po-md-10 po-sm-10">
+        <po-table [p-items]="produtos" [p-columns]="columsProdutos" p-hide-table-search="false" p-container="shadow"
+          [p-sort]="true" [p-striped]="true" [p-actions]="actions" p-actions-right="true">
+        </po-table>
+      </div>
+      <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2 align-all-center">
+        <div class="po-row">
+          <po-widget class="po-lg-12 po-mt-12" p-title="Total Produtos" [p-height]="200">
+            <div class="po-font-subtitle po-text-center">4</div>
+            <div class="po-text-center">Last updated at 08:20</div>
+          </po-widget>
+        </div>
+      </div>
+    </div>
 
+    <po-divider></po-divider>
+
+    <div class="po-row">
+      <div class="po-xl-10 po-lg-10 po-md-10 po-sm-10">
+        <po-table [p-items]="cotacoes" [p-columns]="columsCotacoes" p-hide-table-search="false" p-container="shadow"
+          [p-sort]="true" [p-striped]="true" [p-actions]="actionsCotacao" p-actions-right="true">
+        </po-table>
+      </div>
+      <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2 align-all-center">
+        <div class="po-row">
+          <po-widget class="po-lg-12 po-mt-12" p-title="Total Cotações" [p-height]="200">
+            <div class="po-font-subtitle po-text-center">5</div>
+            <div class="po-text-center">Last updated at 08:20</div>
+          </po-widget>
+        </div>
+      </div>
+    </div>
   </po-tab>
 </po-tabs>
 
 <po-divider></po-divider>
 
-<<<<<<< HEAD
-=======
-<po-modal #modalEditCotacao p-title="Editando Cotação" p-size="md">
-  <po-datepicker name="datepicker" p-label="Data de Validade"> </po-datepicker>
-  <po-modal-footer [p-disabled-align]="false">
-    <po-button p-kind="primary" p-label="Confirmar"
-      (p-click)="confirmCotacao()"> </po-button>
-  </po-modal-footer>
-</po-modal>
-
->>>>>>> cda743a3b33b9bae5a400149a652e0380b8a872d
 <po-modal #modalCotacoes p-title="Cotações Fornecedor XPTO" p-size="xl">
   <app-card-cotacao></app-card-cotacao>
 </po-modal>
 
-<<<<<<< HEAD
-<po-modal #modalPropostasProdutos p-title="Cotações Produto XPTO" p-size="xl">
+<po-modal #modalPropostasProdutos p-title="Propostas do Produto XPTO" p-size="xl">
   <app-card-propostas-produtos></app-card-propostas-produtos>
-=======
-  <po-modal-footer>
-    <po-button p-label="Ver Solicitação da Compra" p-icon="ph ph-eye"> </po-button>
-    <po-button p-label="Ver todos Anexos" p-icon="ph ph-eye"> </po-button>
-    <po-button p-label="Verificar Parecer Técnico" p-icon="ph ph-hard-hat">
-    </po-button>
-    <po-button p-label="Gerar Excel" p-kind="primary" p-icon="ph ph-download">
-    </po-button>
-  </po-modal-footer>
+</po-modal>
 
->>>>>>> cda743a3b33b9bae5a400149a652e0380b8a872d
+<po-modal #modalPropostasVencedoras p-title="Propostas do Produto XPTO" p-size="xl">
+  <app-card-propostas-produtos [vencedor]="true"></app-card-propostas-produtos>
 </po-modal>

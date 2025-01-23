@@ -22,14 +22,15 @@ import { CardPropostasProdutosComponent } from '../../components/card-propostas-
 })
 export class AvalicaoPropostasComponent {
   @ViewChild('modalPropostasProdutos') modalPropostasProdutos!: PoModalComponent;
+  @ViewChild('modalPropostasVencedoras') modalPropostasVencedoras!: PoModalComponent;
   @ViewChild('modalCotacoes') modalCotacoes!: PoModalComponent;
   @ViewChild('modalEditCotacao') modalEditCotacao!: PoModalComponent;
-
   
+  tabSelected: string = '';
+
   constructor(private utilsService: UtilsService) {
   }
 
-  //Visao Fornecedor
   columsFornecedores = [
     { property: 'codFornec', label: "Código" },
     { property: 'nameFornec', label: "Fornecedor" },
@@ -131,7 +132,6 @@ export class AvalicaoPropostasComponent {
     }
   ];
 
-  //Visao Produto
   columsProdutos = [
     { property: 'codProduto', label: "Código" },
     { property: 'nameProduto', label: "Produto" },
@@ -167,11 +167,11 @@ export class AvalicaoPropostasComponent {
     }
   ]
 
-  details(){
+  details() {
 
   }
 
-  confirmCotacao(){
+  confirmCotacao() {
 
   }
 
@@ -180,7 +180,21 @@ export class AvalicaoPropostasComponent {
   }
 
   detailsCotacao() {
-    this.modalCotacoes.open()
+    console.log(this.tabSelected);
+    switch (this.tabSelected) {
+      case 'fornecedor':
+        this.modalCotacoes.open();
+        break;
+      case 'produto':
+        this.modalPropostasProdutos.open();
+        break;
+      case 'vencedoras':
+        this.modalPropostasVencedoras.open();
+        break;
+    }
   }
 
+  eventEmitter(tabName: string) {
+    this.tabSelected = tabName;
+  }
 }

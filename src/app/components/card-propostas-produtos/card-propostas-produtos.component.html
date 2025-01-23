@@ -1,23 +1,47 @@
-<po-list-view
-    p-property-title="name"
-    [p-items]="itens">
-    <ng-template p-list-view-content-template let-item>
+<po-list-view p-property-title="name" [p-items]="dados">
+  <ng-template p-list-view-content-template let-item>
+    <div class="po-row">
+      <div class="po-md-12">
         <div class="po-row">
-            <div class="po-row">
-                <po-info class="po-md-2" p-label="Data da Proposta"
-                [p-value]="item.dataProposta"></po-info>
-            </div>
-
-            <po-divider></po-divider>
-            
-            <div class="po-row">
-                <div class="po-md-12">
-                    <po-table [p-items]="itensCotacao" [p-columns]="columsItens"
-                    p-hide-columns-manager="true" p-container="border"></po-table>
-                </div>
-            </div>
-           
-
+          <div *ngIf="vencedor">
+            <div class="po-md-1">
+                <i class="ph ph-medal"></i>
+              </div>
+          </div> 
+          <po-info class="po-md-1" p-label="Proposta" [p-value]="item.nProposta"></po-info>
+          <po-info class="po-md-3" p-label="Fornecedor" [p-value]="item.fornecedor"></po-info>
+          <po-info class="po-md-3" p-label="Cond. Pagto" [p-value]="item.condPag"></po-info>
+          <po-info class="po-md-1" p-label="Tipo Frete" [p-value]="item.tipoFrete"></po-info>
+          <po-info class="po-md-2" p-label="Data Entrega" [p-value]="item.dtPrevEntrega"></po-info>
         </div>
-    </ng-template>
+        <div class="po-row">
+          <po-info class="po-md-2" p-label="Quantidade de Entregue" [p-value]="item.qtdEntregueFornec"></po-info>
+          <po-info class="po-md-2" p-label="Valor Frete" [p-value]="item.valorFrete"></po-info>
+          <po-info class="po-md-2" p-label="Valor Unitário" [p-value]="item.valorUn"></po-info>
+          <po-info class="po-md-2" p-label="Valor Total" [p-value]="item.valorT"></po-info>
+        </div>
+      </div>
+    </div>
+
+    <po-divider></po-divider>
+
+    <div class="po-row">
+      <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
+        <po-button p-label="Aprovar" p-icon="ph ph-check" p-kind="primary"> </po-button>
+      </div>
+
+      <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
+        <po-button p-label="Reprovar" p-icon="ph ph-x"></po-button>
+      </div>
+
+      <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
+        <po-button p-label="Ver Anexos" p-icon="ph ph-eye"></po-button>
+      </div>
+
+      <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
+        <po-button p-label="Ver Cotação/Negociação" p-icon="ph ph-eye"></po-button>
+      </div>
+    </div>
+
+  </ng-template>
 </po-list-view>

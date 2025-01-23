@@ -1,73 +1,86 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   PoListViewModule, PoInfoModule,
-  PoTableModule, PoDividerModule
+  PoTableModule, PoDividerModule,
+  PoButtonModule, PoFieldModule
 } from '@po-ui/ng-components';
+import { Proposta } from '../../interfaces/proposta';
 
 @Component({
   selector: 'app-card-propostas-produtos',
   standalone: true,
-  imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule],
+  imports: [CommonModule, PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule, PoButtonModule, PoFieldModule],
   templateUrl: './card-propostas-produtos.component.html',
-  styleUrl: './card-propostas-produtos.component.css'
+  styleUrls: ['./card-propostas-produtos.component.css']
 })
-export class CardPropostasProdutosComponent {
-  itens = [
-    { name: 'Proposta 1', dataProposta: '22/01/2025' },
-    { name: 'Proposta 2', dataProposta: "22/01/2025" },
-    { name: 'Proposta 3', dataProposta: "22/01/2025" },
-  ]
+export class CardPropostasProdutosComponent implements OnInit {
+  @Input() vencedor: boolean = false;
+  dados: Proposta[] = [];
 
-  columsItens = [
-    { property: 'produto', label: "Produto" },
-    { property: 'descricao', label: "Descrição" },
-    { property: 'um', label: "UM" },
-    { property: 'dtNescessidade', label: "Necessidade" }
-  ];
-
-
-  itensCotacao = [
+  private todasPropostas: Proposta[] = [
     {
-      produto: "001234",
-      descricao: "Monitor LED 27'' Full HD",
-      um: "UN",
-      dtNescessidade: "20/02/2025"
+      fornecedor: 'ALFA COMÉRCIO E SERVIÇOS LTDA',
+      nProposta: 'PRO-001',
+      condPag: 'No 5° dia do mês subsequente',
+      qtdEntregueFornec: 100,
+      valorUn: 50.00,
+      valorT: 5000.00,
+      dtPrevEntrega: '21/03/2025',
+      tipoFrete: 'CIF',
+      valorFrete: 300.00,
+      vencedora: true
     },
     {
-      produto: "002345",
-      descricao: "Teclado Mecânico RGB",
-      um: "UN",
-      dtNescessidade: "30/02/2025"
+      fornecedor: 'JOÃO PEREIRA DA SILVA',
+      nProposta: 'PRO-002',
+      condPag: 'No 5° dia do mês subsequente',
+      qtdEntregueFornec: 50,
+      valorUn: 80.00,
+      valorT: 4000.00,
+      dtPrevEntrega: '10/03/2025',
+      tipoFrete: 'FOB',
+      valorFrete: 150.00,
+      vencedora: false
     },
     {
-      produto: "003456",
-      descricao: "Mouse Sem Fio Logitech",
-      um: "UN",
-      dtNescessidade: "12/03/2025"
+      fornecedor: 'LUCAS FERREIRA MELO',
+      nProposta: 'PRO-003',
+      condPag: 'No 5° dia do mês subsequente',
+      qtdEntregueFornec: 75,
+      valorUn: 70.00,
+      valorT: 5250.00,
+      dtPrevEntrega: '18/02/2025',
+      tipoFrete: 'CIF',
+      valorFrete: 200.00,
+      vencedora: false
     },
     {
-      produto: "004567",
-      descricao: "Cadeira Ergonômica Executiva",
-      um: "UN",
-      dtNescessidade: "05/02/2025"
-    },
-    {
-      produto: "005678",
-      descricao: "Notebook Dell i7 16GB RAM",
-      um: "UN",
-      dtNescessidade: "23/05/2025"
-    },
-    {
-      produto: "006789",
-      descricao: "Impressora Multifuncional HP",
-      um: "UN",
-      dtNescessidade: "11/04/2025"
-    },
-    {
-      produto: "007890",
-      descricao: "Switch de Rede 24 Portas",
-      um: "UN",
-      dtNescessidade: "01/05/2025"
+      fornecedor: 'BETA SOLUÇÕES TECNOLÓGICAS LTDA',
+      nProposta: 'PRO-004',
+      condPag: 'No 5° dia do mês subsequente',
+      qtdEntregueFornec: 200,
+      valorUn: 40.00,
+      valorT: 8000.00,
+      dtPrevEntrega: '25/02/2025',
+      tipoFrete: 'FOB',
+      valorFrete: 500.00,
+      vencedora: true
     }
   ];
+
+  ngOnInit(): void {
+    this.filtrarPropostas();
+    console.log(this.vencedor)
+  }
+
+  private filtrarPropostas(): void {
+    if (this.vencedor) {
+      // Filtra apenas as propostas vencedoras
+      this.dados = this.todasPropostas.filter(proposta => proposta.vencedora);
+    } else {
+      // Exibe todas as propostas
+      this.dados = [...this.todasPropostas];
+    }
+  }
 }
