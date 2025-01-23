@@ -7,6 +7,10 @@ export interface InformacaoCotacao {
   tipoFrete: string,
   condPgto: string,
   observacao: string,
-  valTotal: number
+  valTotal: number,
+  numCot?: string,
+  filial?: string,
+  numSc?: string,
+  dataSolic?: string
 }
 
