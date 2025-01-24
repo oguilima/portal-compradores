@@ -43,9 +43,12 @@
         <div class="po-row">
             <div class="po-md-10">
                 <po-widget>
-                    <po-table [p-items]="itensFornecedores" [p-columns]="columsFornecedores"
-                    p-hide-columns-manager="true"
-                    p-container="border"></po-table>
+                    <po-table [p-items]="itensFornecedores"
+                        [p-columns]="columsFornecedores"
+                        p-hide-columns-manager="true"
+                        p-container="border" [p-actions]="actions"
+                        p-actions-right="true"
+                        [p-selectable]="false"></po-table>
                 </po-widget>
             </div>
             <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2">
@@ -58,7 +61,43 @@
                 </div>
             </div>
         </div>
-
+        <div class="po-row">
+            <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2">
+                <po-button p-label="Bloquear Novos Participantes"
+                    p-kind="primary"> </po-button>
+            </div>
+            <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2">
+                <po-button p-label="Parecer Técnico" p-icon="ph ph-hard-hat"
+                    (p-click)="parecerTecnico()">
+                </po-button>
+            </div>
+        </div>
     </ng-template>
-
 </po-list-view>
+
+<po-modal #modalCotacoes p-title="Cotações Fornecedor XPTO" p-size="xl">
+    <app-card-cotacao></app-card-cotacao>
+
+    <po-modal-footer>
+        <po-button p-label="Ver Solicitação da Compra" p-icon="ph ph-eye">
+        </po-button>
+        <po-button p-label="Gerar Excel" p-kind="primary"
+            p-icon="ph ph-download">
+        </po-button>
+    </po-modal-footer>
+</po-modal>
+
+<po-modal #modalParecer p-title="Definir Fornecedores para Parecer Técnico"
+    p-size="xl">
+    <po-table [p-items]="itensFornecedores"
+        [p-columns]="columsFornecedores"
+        p-hide-columns-manager="true"
+        p-container="border"
+        [p-selectable]="true"></po-table>
+
+        <po-modal-footer>
+            <po-button p-label="Enviar" p-kind="primary"
+                p-icon="ph ph-check">
+            </po-button>
+        </po-modal-footer>
+</po-modal>

@@ -1,4 +1,6 @@
-export interface InformacaoCotacao {
+import { Produto } from "./produto";
+
+export interface InformacaoCotacao extends Partial<Produto>{
   name: string;
   dataProposta: string,
   validadeProposta:string,

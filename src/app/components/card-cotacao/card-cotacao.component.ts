@@ -6,7 +6,7 @@ import {
 } from '@po-ui/ng-components';
 
 
-import { ItemCotacao } from '../../interfaces/item-cotacao';
+import { Produto } from '../../interfaces/produto';
 import { InformacaoCotacao } from '../../interfaces/informacao-cotacao';
 
 @Component({
@@ -40,12 +40,12 @@ export class CardCotacaoComponent {
     { property: 'valUniCot', label: "Valor Un. Cotado" },
     { property: 'valFrete', label: "Valor do Frete" },
     { property: 'valTotItem', label: "Valor Total Item" },
-    { property: 'dtNescessidade', label: "Necessidade" },
+    { property: 'dtNecessidade', label: "Necessidade" },
     { property: 'dtPrevEntrega', label: "Previsão de Entrega" },
     
   ];
 
-  itensCotacao: ItemCotacao[] = [
+  itensCotacao: Produto[] = [
     {
       produto: "001234",
       descricao: "Monitor LED 27'' Full HD",
@@ -53,7 +53,7 @@ export class CardCotacaoComponent {
       qtdCot: 8,
       valRefSc: 1500.00,
       valUniCot: 1450.00,
-      dtNescessidade: "20/02/2025",
+      dtNecessidade: "20/02/2025",
       dtPrevEntrega: "20/02/2025",
       valFrete: 0,
       valTotItem: 0
@@ -65,7 +65,7 @@ export class CardCotacaoComponent {
       qtdCot: 12,
       valRefSc: 500.00,
       valUniCot: 480.00,
-      dtNescessidade: "30/02/2025",
+      dtNecessidade: "30/02/2025",
       dtPrevEntrega: "20/02/2025",
       valFrete: 0,
       valTotItem: 0
@@ -77,7 +77,7 @@ export class CardCotacaoComponent {
       qtdCot: 18,
       valRefSc: 200.00,
       valUniCot: 190.00,
-      dtNescessidade: "12/03/2025",
+      dtNecessidade: "12/03/2025",
       dtPrevEntrega: "20/02/2025",
       valFrete: 0,
       valTotItem: 0
@@ -89,7 +89,7 @@ export class CardCotacaoComponent {
       qtdCot: 4,
       valRefSc: 1200.00,
       valUniCot: 1150.00,
-      dtNescessidade: "05/02/2025",
+      dtNecessidade: "05/02/2025",
       dtPrevEntrega: "20/02/2025",
       valFrete: 0,
       valTotItem: 0
@@ -101,7 +101,7 @@ export class CardCotacaoComponent {
       qtdCot: 6,
       valRefSc: 8000.00,
       valUniCot: 7800.00,
-      dtNescessidade: "23/05/2025",
+      dtNecessidade: "23/05/2025",
       dtPrevEntrega: "20/02/2025",
       valFrete: 0,
       valTotItem: 0
@@ -113,7 +113,7 @@ export class CardCotacaoComponent {
       qtdCot: 9,
       valRefSc: 1500.00,
       valUniCot: 1450.00,
-      dtNescessidade: "11/04/2025",
+      dtNecessidade: "11/04/2025",
       dtPrevEntrega: "20/02/2025",
       valFrete: 0,
       valTotItem: 0
@@ -125,7 +125,7 @@ export class CardCotacaoComponent {
       qtdCot: 10,
       valRefSc: 1200.00,
       valUniCot: 1150.00,
-      dtNescessidade: "01/05/2025",
+      dtNecessidade: "01/05/2025",
       dtPrevEntrega: "20/02/2025",
       valFrete: 0,
       valTotItem: 0

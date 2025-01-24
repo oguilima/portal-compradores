@@ -1,11 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   PoListViewModule, PoInfoModule,
   PoTableModule, PoDividerModule,
-  PoButtonModule, PoFieldModule
+  PoButtonModule, PoFieldModule,
+  PoTableAction
 } from '@po-ui/ng-components';
-import { Proposta } from '../../interfaces/proposta';
+import { Fornecedor } from '../../interfaces/fornecedor';
+import { Produto } from '../../interfaces/produto';
 
 @Component({
   selector: 'app-card-propostas-produtos',
@@ -14,73 +16,92 @@ import { Proposta } from '../../interfaces/proposta';
   templateUrl: './card-propostas-produtos.component.html',
   styleUrls: ['./card-propostas-produtos.component.css']
 })
-export class CardPropostasProdutosComponent implements OnInit {
-  @Input() vencedor: boolean = false;
-  dados: Proposta[] = [];
+export class CardPropostasProdutosComponent {
+  produto: Produto =
+    {
+      produto: "123456",
+      descricao: "Monitor Lcd..",
+      qtdSc: 10,
+      valRefSc: 15,
+      um: "UN",
+      dtNecessidade: "10/02/2025",
+    }
 
-  private todasPropostas: Proposta[] = [
+
+  columsFornecedores = [
+    { property: 'codigo', label: "Código" },
+    { property: 'loja', label: "Loja" },
+    { property: 'descricao', label: "Descrição" },
+    { property: "dataProposta", label: "Data Proposta" },
+    { property: "validadeProposta", label: "Validade Proposta" },
+    { property: "qtdCot", label: "Qt. Cotada" },
+    { property: "valUniCot", label: "Val. Uni." },
+    { property: "valorFrete", label: "Valor Frete" },
+    { property: "valTotItem", label: "Val. Total Item." },
+    { property: "tipoFrete", label: "Tipo de Frete" },
+    { property: "condPgto", label: "Cond. Pgto" },
+    { property: "observacao", label: "Observação" },
+  ]
+
+  itensFornecedores: Fornecedor[] = [
     {
-      fornecedor: 'ALFA COMÉRCIO E SERVIÇOS LTDA',
-      nProposta: 'PRO-001',
-      condPag: 'No 5° dia do mês subsequente',
-      qtdEntregueFornec: 100,
-      valorUn: 50.00,
-      valorT: 5000.00,
-      dtPrevEntrega: '21/03/2025',
-      tipoFrete: 'CIF',
-      valorFrete: 300.00,
-      vencedora: true
-    },
-    {
-      fornecedor: 'JOÃO PEREIRA DA SILVA',
-      nProposta: 'PRO-002',
-      condPag: 'No 5° dia do mês subsequente',
-      qtdEntregueFornec: 50,
-      valorUn: 80.00,
-      valorT: 4000.00,
-      dtPrevEntrega: '10/03/2025',
-      tipoFrete: 'FOB',
-      valorFrete: 150.00,
-      vencedora: false
-    },
-    {
-      fornecedor: 'LUCAS FERREIRA MELO',
-      nProposta: 'PRO-003',
-      condPag: 'No 5° dia do mês subsequente',
-      qtdEntregueFornec: 75,
-      valorUn: 70.00,
-      valorT: 5250.00,
-      dtPrevEntrega: '18/02/2025',
-      tipoFrete: 'CIF',
-      valorFrete: 200.00,
-      vencedora: false
-    },
-    {
-      fornecedor: 'BETA SOLUÇÕES TECNOLÓGICAS LTDA',
-      nProposta: 'PRO-004',
-      condPag: 'No 5° dia do mês subsequente',
-      qtdEntregueFornec: 200,
-      valorUn: 40.00,
-      valorT: 8000.00,
-      dtPrevEntrega: '25/02/2025',
-      tipoFrete: 'FOB',
-      valorFrete: 500.00,
-      vencedora: true
+      codigo: "001234",
+      descricao: "Fornecedor 1",
+      loja: "001",
+      filial: "5305",
+      dataProposta: "24/01/2025",
+      validadeProposta: "01/10/2025",
+      valorFrete: 0,
+      tipoFrete: "CIF",
+      condPgto: "50/50",
+      observacao: "n/a",
+      valUniCot: 100,
+      valTotItem: 100,
+      qtdCot: 1,
+    }, {
+      codigo: "001234",
+      descricao: "Fornecedor 2",
+      loja: "001",
+      filial: "5305",
+      dataProposta: "24/01/2025",
+      validadeProposta: "01/10/2025",
+      valorFrete: 0,
+      tipoFrete: "CIF",
+      condPgto: "50/50",
+      observacao: "n/a",
+      valUniCot: 100,
+      valTotItem: 100,
+      qtdCot: 1,
+    }, {
+      codigo: "001234",
+      descricao: "Fornecedor 3",
+      loja: "001",
+      filial: "5305",
+      dataProposta: "24/01/2025",
+      validadeProposta: "01/10/2025",
+      valorFrete: 0,
+      tipoFrete: "CIF",
+      condPgto: "50/50",
+      observacao: "n/a",
+      valUniCot: 100,
+      valTotItem: 100,
+      qtdCot: 1,
     }
   ];
 
-  ngOnInit(): void {
-    this.filtrarPropostas();
-    console.log(this.vencedor)
+
+  actionsProduto: Array<PoTableAction> = [
+    { action: this.aprovarNegociacao.bind(this), icon: 'ph ph-check', label: 'Validar Proposta' },
+    { action: this.enviarPNegociacao.bind(this), icon: 'ph ph-x', label: 'Negociar' },
+    
+  ]
+
+  private aprovarNegociacao(): void{
+
   }
 
-  private filtrarPropostas(): void {
-    if (this.vencedor) {
-      // Filtra apenas as propostas vencedoras
-      this.dados = this.todasPropostas.filter(proposta => proposta.vencedora);
-    } else {
-      // Exibe todas as propostas
-      this.dados = [...this.todasPropostas];
-    }
+  private enviarPNegociacao(): void{
+
   }
+
 }

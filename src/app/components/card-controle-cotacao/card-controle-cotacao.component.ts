@@ -1,24 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   PoListViewModule, PoInfoModule,
   PoTableModule, PoDividerModule,
-  PoWidgetModule
+  PoWidgetModule, PoTableAction,
+  PoButtonModule, PoModalModule,
+  PoModalComponent
 } from '@po-ui/ng-components';
 
+import { CardCotacaoComponent } from "../card-cotacao/card-cotacao.component"
+
 import { InformacaoCotacao } from '../../interfaces/informacao-cotacao';
-import { ItemCotacao } from '../../interfaces/item-cotacao';
+import { Produto } from '../../interfaces/produto';
 import { Fornecedor } from '../../interfaces/fornecedor';
+
 
 @Component({
   selector: 'app-card-controle-cotacao',
   standalone: true,
   imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule,
-    PoWidgetModule
+    PoWidgetModule, PoButtonModule, PoModalModule, CardCotacaoComponent
   ],
   templateUrl: './card-controle-cotacao.component.html',
   styleUrl: './card-controle-cotacao.component.css'
 })
 export class CardControleCotacaoComponent {
+  @ViewChild('modalCotacoes') modalCotacoes!: PoModalComponent;
+  @ViewChild('modalParecer') modalParecer!: PoModalComponent;
+  
+  constructor(){}
+  
   dados: Partial<InformacaoCotacao>[] = [
     {
       numCot: "00001",
@@ -35,34 +45,34 @@ export class CardControleCotacaoComponent {
     { property: 'descricao', label: "Descrição" },
     { property: 'qtdSc', label: "Qtd. SC" },
     { property: 'valRefSc', label: "Valor Referência SC" },
-    { property: 'dtNescessidade', label: "Necessidade" },
+    { property: 'dtNecessidade', label: "Necessidade" },
   ];
 
-  itensCotacao: Partial<ItemCotacao>[] = [
+  itensCotacao: Partial<Produto>[] = [
     {
       produto: "001234",
       descricao: "Monitor LED 27'' Full HD",
       qtdSc: 10,
       valRefSc: 1500.00,
-      dtNescessidade: "20/02/2025"
+      dtNecessidade: "20/02/2025"
     }, {
       produto: "002345",
       descricao: "Teclado Mecânico RGB",
       qtdSc: 15,
       valRefSc: 500.00,
-      dtNescessidade: "30/02/2025"
+      dtNecessidade: "30/02/2025"
     }, {
       produto: "003456",
       descricao: "Mouse Sem Fio Logitech",
       qtdSc: 20,
       valRefSc: 200.00,
-      dtNescessidade: "12/03/2025"
+      dtNecessidade: "12/03/2025"
     }, {
       produto: "004567",
       descricao: "Cadeira Ergonômica Executiva",
       qtdSc: 5,
       valRefSc: 1200.00,
-      dtNescessidade: "05/02/2025"
+      dtNecessidade: "05/02/2025"
     }];
 
 
@@ -90,4 +100,18 @@ export class CardControleCotacaoComponent {
       filial: "5305",
       valTotal: 1000
     }];
+
+
+  actions: Array<PoTableAction> = [
+    { action: this.details.bind(this), label: 'Detalhes' },
+  ]
+
+
+  private details(): void {
+    this.modalCotacoes.open()
+  }
+
+  parecerTecnico(): void {
+    this.modalParecer.open()
+  }
 }

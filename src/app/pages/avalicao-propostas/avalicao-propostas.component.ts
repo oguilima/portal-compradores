@@ -4,7 +4,7 @@ import {
   PoModalModule, PoFieldModule,
   PoTableModule, PoTableAction,
   PoButtonModule, PoSearchModule,
-  PoModalAction, PoModalComponent,
+  PoModalComponent,
   PoTabsModule, PoDividerModule,
   PoWidgetModule
 
@@ -21,64 +21,12 @@ import { CardPropostasProdutosComponent } from '../../components/card-propostas-
   styleUrl: './avalicao-propostas.component.css'
 })
 export class AvalicaoPropostasComponent {
-  @ViewChild('modalPropostasProdutos') modalPropostasProdutos!: PoModalComponent;
-  @ViewChild('modalPropostasVencedoras') modalPropostasVencedoras!: PoModalComponent;
-  @ViewChild('modalCotacoes') modalCotacoes!: PoModalComponent;
-  @ViewChild('modalEditCotacao') modalEditCotacao!: PoModalComponent;
-
-  tabSelected: string = '';
+  @ViewChild('modalAnalises') modalAnalises!: PoModalComponent;
+  @ViewChild('modalPropostasFornecedores') modalPropostasFornecedores!: PoModalComponent;
+  @ViewChild('modalEditCotacao') modalEditCotacao!: PoModalComponent; 
 
   constructor(private utilsService: UtilsService) {
   }
-
-  columsFornecedores = [
-    { property: 'codFornec', label: "Código" },
-    { property: 'nameFornec', label: "Fornecedor" },
-    { property: 'cgcFornec', label: "CGC" },
-    {
-      property: 'TipoFornec', type: 'label', labels: [
-        { value: 'F', color: 'blue', label: 'Fisico', icon: "ph ph-user" },
-        { value: 'J', color: ' #745678', label: 'Juridico', icon: "ph ph-building-apartment" },
-        { value: 'X', color: 'rgb(186, 79, 95)', label: 'Outros', icon: 'ph ph-dots-three' }
-      ]
-    }
-  ];
-
-  fornecedores = [
-    {
-      codFornec: '12345678',
-      nameFornec: 'ALFA COMÉRCIO E SERVIÇOS LTDA',
-      cgcFornec: '12345678000199',
-      TipoFornec: 'J'
-    },
-    {
-      codFornec: '87654321',
-      nameFornec: 'JOÃO PEREIRA DA SILVA',
-      cgcFornec: '87654321023',
-      TipoFornec: 'F'
-    },
-    {
-      codFornec: '11223344',
-      nameFornec: 'LUCAS FERREIRA MELO',
-      cgcFornec: '11223344056',
-      TipoFornec: 'F'
-    },
-    {
-      codFornec: '44332211',
-      nameFornec: 'BETA SOLUÇÕES TECNOLÓGICAS LTDA',
-      cgcFornec: '44332211000188',
-      TipoFornec: 'J'
-    }
-  ];
-
-  actions: Array<PoTableAction> = [
-    { action: this.details.bind(this), label: 'Detalhes' },
-  ]
-
-  actionsCotacao: Array<PoTableAction> = [
-    { action: this.editCotacao.bind(this), icon: 'ph ph-pencil', label: 'Editar' },
-    { action: this.detailsCotacao.bind(this), icon: 'ph ph-eye', label: 'Detalhes' },
-  ]
 
   columsCotacoes = [
     { property: 'nSC', label: "N° SC" },
@@ -132,44 +80,66 @@ export class AvalicaoPropostasComponent {
     }
   ];
 
-  //Visao Produto
-  columsProdutos = [
-    { property: 'codProduto', label: "Código" },
-    { property: 'nameProduto', label: "Produto" },
-    { property: 'unMedida', label: "Unid Medida" },
-    { property: 'grupo', label: "Grupo" }
-  ]
 
-  produtos = [
-    {
-      codProduto: '00000003',
-      nameProduto: 'AR CONDICIONADO DE JANELA',
-      unMedida: 'UN',
-      grupo: '3000'
-    },
-    {
-      codProduto: '00000007',
-      nameProduto: 'MESA DE ESCRITÓRIO',
-      unMedida: 'UN',
-      grupo: '5000'
 
-    },
+  columsFornecedores = [
+    { property: 'codFornec', label: "Código" },
+    { property: 'nameFornec', label: "Fornecedor" },
+    { property: 'cgcFornec', label: "CGC" },
     {
-      codProduto: '00000012',
-      nameProduto: 'CADEIRA GIRATÓRIA',
-      unMedida: 'UN',
-      grupo: '7000'
-    },
-    {
-      codProduto: '00000018',
-      nameProduto: 'MONITOR LED 24',
-      unMedida: 'UN',
-      grupo: '9000'
+      property: 'TipoFornec', type: 'label', labels: [
+        { value: 'F', color: 'blue', label: 'Fisico', icon: "ph ph-user" },
+        { value: 'J', color: ' #745678', label: 'Juridico', icon: "ph ph-building-apartment" },
+        { value: 'X', color: 'rgb(186, 79, 95)', label: 'Outros', icon: 'ph ph-dots-three' }
+      ]
     }
+  ];
+
+  fornecedores = [
+    {
+      codFornec: '12345678',
+      nameFornec: 'ALFA COMÉRCIO E SERVIÇOS LTDA',
+      cgcFornec: '12345678000199',
+      TipoFornec: 'J'
+    },
+    {
+      codFornec: '87654321',
+      nameFornec: 'JOÃO PEREIRA DA SILVA',
+      cgcFornec: '87654321023',
+      TipoFornec: 'F'
+    },
+    {
+      codFornec: '11223344',
+      nameFornec: 'LUCAS FERREIRA MELO',
+      cgcFornec: '11223344056',
+      TipoFornec: 'F'
+    },
+    {
+      codFornec: '44332211',
+      nameFornec: 'BETA SOLUÇÕES TECNOLÓGICAS LTDA',
+      cgcFornec: '44332211000188',
+      TipoFornec: 'J'
+    }
+  ];
+
+
+  actionsCotacao: Array<PoTableAction> = [
+    { action: this.editCotacao.bind(this), icon: 'ph ph-pencil', label: 'Editar' },
+    { action: this.detailsCotacao.bind(this), icon: 'ph ph-eye', label: 'Detalhes' },
   ]
 
-  details() {
+  actionsPorFornecedor: Array<PoTableAction> = [
+    { action: this.detailsPropose.bind(this), label: 'Ver Propostas' },
+  ]
 
+
+  private detailsCotacao() {
+    this.modalAnalises.open();
+  }
+
+
+  private detailsPropose() {
+    this.modalPropostasFornecedores.open();
   }
 
   confirmCotacao() {
@@ -178,24 +148,5 @@ export class AvalicaoPropostasComponent {
 
   editCotacao() {
     this.modalEditCotacao.open()
-  }
-
-  detailsCotacao() {
-    console.log(this.tabSelected);
-    switch (this.tabSelected) {
-      case 'fornecedor':
-        this.modalCotacoes.open();
-        break;
-      case 'produto':
-        this.modalPropostasProdutos.open();
-        break;
-      case 'vencedoras':
-        this.modalPropostasVencedoras.open();
-        break;
-    }
-  }
-
-  eventEmitter(tabName: string) {
-    this.tabSelected = tabName;
   }
 }
