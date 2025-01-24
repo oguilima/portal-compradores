@@ -26,7 +26,7 @@
     <div class="po-md-12">
       <po-table [p-items]="itensFornecedores" [p-columns]="columsFornecedores"
         p-hide-columns-manager="true"
-        p-container="border" p-actions-right="true" [p-actions]="actionsProduto"></po-table>
+        p-container="border" [p-actions-right]="!definindoVencedor" [p-actions]="actionsProduto"></po-table>
     </div>
   </div>
 

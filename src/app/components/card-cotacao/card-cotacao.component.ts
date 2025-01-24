@@ -2,21 +2,28 @@ import { Component } from '@angular/core';
 import {
   PoListViewModule, PoInfoModule,
   PoTableModule, PoDividerModule,
-  PoButtonModule 
+  PoButtonModule
 } from '@po-ui/ng-components';
-
 
 import { Produto } from '../../interfaces/produto';
 import { InformacaoCotacao } from '../../interfaces/informacao-cotacao';
+import { Alerta } from '../../interfaces/alerta';
+
+import { UtilsService } from '../../utils/utils.service';
 
 @Component({
   selector: 'app-card-cotacao',
   standalone: true,
-  imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule, PoButtonModule ],
+  imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule, PoButtonModule],
   templateUrl: './card-cotacao.component.html',
   styleUrl: './card-cotacao.component.css'
 })
 export class CardCotacaoComponent {
+
+  constructor(private utilsService: UtilsService) {
+
+  }
+
   dados: InformacaoCotacao[] = [
     {
       name: 'Proposta 1',
@@ -42,7 +49,7 @@ export class CardCotacaoComponent {
     { property: 'valTotItem', label: "Valor Total Item" },
     { property: 'dtNecessidade', label: "Necessidade" },
     { property: 'dtPrevEntrega', label: "Previsão de Entrega" },
-    
+
   ];
 
   itensCotacao: Produto[] = [
@@ -131,5 +138,33 @@ export class CardCotacaoComponent {
       valTotItem: 0
     }
   ];
+
+  validarProposta(): void {
+    this.utilsService.showSweetAlert(
+      {
+        title: "Sucesso!",
+        message: "A cotação foi validada!",
+        icon: "success"
+      })
+  }
+
+  async enviarPNegociacao(): Promise<void> {
+    const mensagemEnvio: Alerta = await this.utilsService.showSweetAlert(
+      {
+        title: "Justificativa",
+        message: "Qual a justificativa para enviar para negociação?",
+        icon: "info",
+        input: true
+      })
+
+    if (mensagemEnvio.isConfirmed) {
+      this.utilsService.showSweetAlert(
+        {
+          title: "Sucesso!",
+          message: "A cotação foi enviada para o fornecedor!",
+          icon: "success"
+        })
+    }
+  }
 
 }

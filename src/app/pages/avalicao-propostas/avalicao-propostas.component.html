@@ -15,11 +15,32 @@
       </po-widget>
     </div>
   </div>
+
+  <div class="po-xl-12 po-lg-12 po-md-12 po-sm-12">
+    <po-divider></po-divider>
+  </div>
+  
+
+  <div class="po-xl-10 po-lg-10 po-md-10 po-sm-10">
+    <po-table [p-items]="itensCotacao" [p-columns]="columsItens"
+      p-hide-table-search="false" p-container="shadow"
+      [p-sort]="true" [p-striped]="true">
+    </po-table>
+  </div>
+  <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2 align-all-center">
+    <div class="po-row">
+      <po-widget class="po-lg-12 po-mt-12" p-title="Total Produtos"
+        [p-height]="200">
+        <div class="po-font-subtitle po-text-center">7</div>
+        <div class="po-text-center">Last updated at 08:20</div>
+      </po-widget>
+    </div>
+  </div>
 </div>
 
-<po-modal #modalAnalises p-title="Detalhes" p-size="xl">
+<po-modal #modalAnalises p-title="Análisar Cotação" p-size="xl">
   <po-tabs #poTab>
-    <po-tab p-label="Análise por Fornecedor">
+    <po-tab p-label="Fornecedor" *ngIf="!definindoVencedor">
       <div class="po-row">
         <div class="po-xl-10 po-lg-10 po-md-10 po-sm-10">
           <po-table [p-items]="fornecedores" [p-columns]="columsFornecedores"
@@ -40,15 +61,9 @@
       </div>
     </po-tab>
 
-    <po-tab p-label="Análise por Produto">
+    <po-tab p-label="Produto">
       <div class="po-row m-t">
-        <app-card-propostas-produtos></app-card-propostas-produtos>
-      </div>
-      <div class="po-row  m-t">
-        <app-card-propostas-produtos></app-card-propostas-produtos>
-      </div>
-      <div class="po-row  m-t">
-        <app-card-propostas-produtos></app-card-propostas-produtos>
+        <app-card-propostas-produtos [definindoVencedor]="definindoVencedor"></app-card-propostas-produtos>
       </div>
     </po-tab>
   </po-tabs>
@@ -58,7 +73,7 @@
   <po-datepicker name="datepicker" p-label="Data de Validade"> </po-datepicker>
   <po-modal-footer [p-disabled-align]="false">
     <po-button p-kind="primary" p-label="Confirmar"
-      (p-click)="confirmCotacao()"> </po-button>
+      (p-click)="confirmarEdicao()"> </po-button>
   </po-modal-footer>
 </po-modal>
 

@@ -49,12 +49,14 @@ export class AppComponent {
       label: 'Avaliação de Propostas',
       action: this.getMenuAction('/avaliacaoPropostas'),
       icon: 'ph ph-currency-dollar',
-      shortLabel: 'Avaliação de Propostas'
+      shortLabel: 'Avaliação de Propostas',
+      badge: { value: 5 }
     }, {
-      label: 'Definir Vencedor',
+      label: 'Definir Vencedor Cotação',
       action: this.getMenuAction('/propostaVencedora'),
       icon: 'ph ph-crown',
-      shortLabel: 'Definir Vencedor'
+      shortLabel: 'Definir Vencedor Cotação',
+      badge: { value: 6 }
     }
   ];
 

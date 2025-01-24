@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { UtilsService } from '../../utils/utils.service';
 import {
   PoModalModule, PoFieldModule,
@@ -12,21 +12,29 @@ import {
 import { CardCotacaoComponent } from "../../components/card-cotacao/card-cotacao.component";
 import { CardPropostasProdutosComponent } from '../../components/card-propostas-produtos/card-propostas-produtos.component';
 
+import { Produto } from '../../interfaces/produto';
+
+import { CommonModule } from '@angular/common';
+
+
 @Component({
   selector: 'app-avalicao-propostas',
   standalone: true,
   imports: [PoTableModule, PoButtonModule, PoSearchModule, PoModalModule, PoFieldModule, PoTabsModule, PoDividerModule,
-    PoWidgetModule, CardCotacaoComponent, CardPropostasProdutosComponent],
+    PoWidgetModule, CardCotacaoComponent, CardPropostasProdutosComponent, CommonModule],
   templateUrl: './avalicao-propostas.component.html',
   styleUrl: './avalicao-propostas.component.css'
 })
-export class AvalicaoPropostasComponent {
+export class AvalicaoPropostasComponent{
   @ViewChild('modalAnalises') modalAnalises!: PoModalComponent;
   @ViewChild('modalPropostasFornecedores') modalPropostasFornecedores!: PoModalComponent;
-  @ViewChild('modalEditCotacao') modalEditCotacao!: PoModalComponent; 
+  @ViewChild('modalEditCotacao') modalEditCotacao!: PoModalComponent;
+
+  @Input() definindoVencedor: boolean = false
 
   constructor(private utilsService: UtilsService) {
   }
+
 
   columsCotacoes = [
     { property: 'nSC', label: "N° SC" },
@@ -123,9 +131,65 @@ export class AvalicaoPropostasComponent {
   ];
 
 
+  columsItens = [
+    { property: 'produto', label: "Produto" },
+    { property: 'descricao', label: "Descrição" },
+    { property: 'qtdSc', label: "Qtd. SC" },
+    { property: 'valRefSc', label: "Valor Referência SC" },
+    { property: 'dtNecessidade', label: "Necessidade" },
+  ];
+
+  itensCotacao: Produto[] = [
+    {
+      produto: "001234",
+      descricao: "Monitor LED 27'' Full HD",
+      qtdSc: 10,
+      valRefSc: 1500.00,
+      dtNecessidade: "20/02/2025",
+    }, {
+      produto: "002345",
+      descricao: "Teclado Mecânico RGB",
+      qtdSc: 15,
+      valRefSc: 500.00,
+      dtNecessidade: "30/02/2025",
+    }, {
+      produto: "003456",
+      descricao: "Mouse Sem Fio Logitech",
+      qtdSc: 20,
+      valRefSc: 200.00,
+      dtNecessidade: "12/03/2025",
+    }, {
+      produto: "004567",
+      descricao: "Cadeira Ergonômica Executiva",
+      qtdSc: 5,
+      valRefSc: 1200.00,
+      dtNecessidade: "05/02/2025",
+    }, {
+      produto: "005678",
+      descricao: "Notebook Dell i7 16GB RAM",
+      qtdSc: 7,
+      valRefSc: 8000.00,
+      dtNecessidade: "23/05/2025",
+    }, {
+      produto: "006789",
+      descricao: "Impressora Multifuncional HP",
+      qtdSc: 10,
+      valRefSc: 1500.00,
+      dtNecessidade: "11/04/2025",
+    }, {
+      produto: "007890",
+      descricao: "Switch de Rede 24 Portas",
+      qtdSc: 12,
+      valRefSc: 1200.00,
+      dtNecessidade: "01/05/2025",
+    }
+  ];
+
+
   actionsCotacao: Array<PoTableAction> = [
     { action: this.editCotacao.bind(this), icon: 'ph ph-pencil', label: 'Editar' },
-    { action: this.detailsCotacao.bind(this), icon: 'ph ph-eye', label: 'Detalhes' },
+    { action: this.detailsCotacao.bind(this), icon: 'ph ph-book-open-text', label: 'Análisar Cotação' },
+    { action: () => { }, icon: 'ph ph-eye', label: 'Ver Itens' },
   ]
 
   actionsPorFornecedor: Array<PoTableAction> = [
@@ -142,11 +206,12 @@ export class AvalicaoPropostasComponent {
     this.modalPropostasFornecedores.open();
   }
 
-  confirmCotacao() {
-
-  }
-
   editCotacao() {
     this.modalEditCotacao.open()
   }
+
+  confirmarEdicao() {
+
+  }
+
 }
