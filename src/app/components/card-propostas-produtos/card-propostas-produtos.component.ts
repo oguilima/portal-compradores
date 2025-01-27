@@ -63,6 +63,7 @@ export class CardPropostasProdutosComponent implements OnInit {
       { property: 'codigo', label: 'Código' },
       { property: 'loja', label: 'Loja' },
       { property: 'descricao', label: 'Descrição' },
+      { property: 'nProposta', label: 'Nº Proposta' },
       { property: 'dataProposta', label: 'Data Proposta' },
       { property: 'validadeProposta', label: 'Validade Proposta' },
       { property: 'qtdCot', label: 'Qt. Cotada' },
@@ -70,8 +71,7 @@ export class CardPropostasProdutosComponent implements OnInit {
       { property: 'valorFrete', label: 'Valor Frete' },
       { property: 'valTotItem', label: 'Val. Total Item.' },
       { property: 'tipoFrete', label: 'Tipo de Frete' },
-      { property: 'condPgto', label: 'Cond. Pgto' },
-      { property: 'observacao', label: 'Observação' },
+      { property: 'condPgto', label: 'Cond. Pgto' }
     ];
   }
 
@@ -99,6 +99,7 @@ export class CardPropostasProdutosComponent implements OnInit {
       descricao: "Fornecedor 1",
       loja: "001",
       filial: "5305",
+      nProposta: 1,
       dataProposta: "24/01/2025",
       validadeProposta: "01/10/2025",
       valorFrete: 0,
@@ -115,6 +116,7 @@ export class CardPropostasProdutosComponent implements OnInit {
       descricao: "Fornecedor 2",
       loja: "001",
       filial: "5305",
+      nProposta: 1,
       dataProposta: "24/01/2025",
       validadeProposta: "01/10/2025",
       valorFrete: 0,
@@ -131,6 +133,7 @@ export class CardPropostasProdutosComponent implements OnInit {
       descricao: "Fornecedor 3",
       loja: "001",
       filial: "5305",
+      nProposta: 1,
       dataProposta: "24/01/2025",
       validadeProposta: "01/10/2025",
       valorFrete: 0,
@@ -158,6 +161,11 @@ export class CardPropostasProdutosComponent implements OnInit {
         icon: 'ph ph-x',
         label: 'Negociar',
       },
+      {
+        action: () => {}, 
+        icon: 'ph ph-hard-hat',
+        label: 'Verificar Parecer',
+      }
     ];
   }
 
