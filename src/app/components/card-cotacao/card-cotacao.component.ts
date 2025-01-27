@@ -7,9 +7,8 @@ import {
 
 import { Produto } from '../../interfaces/produto';
 import { InformacaoCotacao } from '../../interfaces/informacao-cotacao';
-import { Alerta } from '../../interfaces/alerta';
 
-import { UtilsService } from '../../utils/utils.service';
+import { ActionsProposeService } from '../../services/actions-propose.service';
 
 @Component({
   selector: 'app-card-cotacao',
@@ -20,9 +19,7 @@ import { UtilsService } from '../../utils/utils.service';
 })
 export class CardCotacaoComponent {
 
-  constructor(private utilsService: UtilsService) {
-
-  }
+  constructor( private actionsPropose: ActionsProposeService) {  }
 
   dados: InformacaoCotacao[] = [
     {
@@ -140,31 +137,10 @@ export class CardCotacaoComponent {
   ];
 
   validarProposta(): void {
-    this.utilsService.showSweetAlert(
-      {
-        title: "Sucesso!",
-        message: "A cotação foi validada!",
-        icon: "success"
-      })
+    this.actionsPropose.aprovarNegociacao();
   }
 
   async enviarPNegociacao(): Promise<void> {
-    const mensagemEnvio: Alerta = await this.utilsService.showSweetAlert(
-      {
-        title: "Justificativa",
-        message: "Qual a justificativa para enviar para negociação?",
-        icon: "info",
-        input: true
-      })
-
-    if (mensagemEnvio.isConfirmed) {
-      this.utilsService.showSweetAlert(
-        {
-          title: "Sucesso!",
-          message: "A cotação foi enviada para o fornecedor!",
-          icon: "success"
-        })
-    }
+    this.actionsPropose.enviarPNegociacao();
   }
-
 }

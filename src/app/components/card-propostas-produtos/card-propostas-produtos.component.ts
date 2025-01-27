@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   PoListViewModule, PoInfoModule,
@@ -8,10 +8,9 @@ import {
 } from '@po-ui/ng-components';
 
 import { Produto } from '../../interfaces/produto';
-import { Alerta } from '../../interfaces/alerta';
-
-import { UtilsService } from '../../utils/utils.service';
 import { FornecedorVencedor } from '../../interfaces/fornecedor-vencedor';
+
+import { ActionsProposeService } from '../../services/actions-propose.service';
 
 @Component({
   selector: 'app-card-propostas-produtos',
@@ -21,9 +20,9 @@ import { FornecedorVencedor } from '../../interfaces/fornecedor-vencedor';
   templateUrl: './card-propostas-produtos.component.html',
   styleUrls: ['./card-propostas-produtos.component.css']
 })
-export class CardPropostasProdutosComponent {
+export class CardPropostasProdutosComponent implements OnInit {
 
-  constructor(private utilsService: UtilsService) {
+  constructor(private actionsPropose: ActionsProposeService) {
 
   }
 
@@ -76,19 +75,22 @@ export class CardPropostasProdutosComponent {
     ];
   }
 
+  actionsProduto: Array<PoTableAction> = [];
 
+  ngOnInit(): void {
+    this.actionsProduto = this.definindoVencedor
+      ? this.getAcoesDefinindoVencedor()
+      : this.getAcoesPadrao();
+  }
 
 
   private defineVencedor(row: any) {
     row.vencedor = !row.vencedor;
   }
 
-
-
   private isFavorite(row: any) {
     return row?.vencedor ? 'color-08' : '';
   }
-
 
   itensFornecedores: FornecedorVencedor[] = [
     {
@@ -143,74 +145,32 @@ export class CardPropostasProdutosComponent {
   ];
 
 
-  get actionsProduto(): Array<PoTableAction> {
-    return !this.definindoVencedor
-      ? [
-        {
-          action: this.aprovarNegociacao.bind(this),
-          icon: 'ph ph-check',
-          label: 'Validar Proposta'
-        },
-        {
-          action: this.enviarPNegociacao.bind(this),
-          icon: 'ph ph-x',
-          label: 'Negociar'
-        }
-      ]
-      : [
-        {
-          action: this.definirQuantidade.bind(this),
-          label: 'Definir Quantidade'
-        }
-      ];
-  }
 
-
-
-  private aprovarNegociacao(): void {
-    this.utilsService.showSweetAlert(
+  private getAcoesPadrao(): Array<PoTableAction> {
+    return [
       {
-        title: "Sucesso!",
-        message: "A cotação foi validada!",
-        icon: "success"
-      })
-  }
-
-  private async enviarPNegociacao(): Promise<void> {
-    const alerta: Alerta = await this.utilsService.showSweetAlert(
+        action: () => this.actionsPropose.aprovarNegociacao(), 
+        icon: 'ph ph-check',
+        label: 'Validar Proposta',
+      },
       {
-        title: "Atenção",
-        message: "Você está devolvendo para negociação esse item e o restante da cotação!",
-        icon: "warning",
-      })
-
-    if (alerta.isConfirmed) {
-      const mensagemEnvio: Alerta = await this.utilsService.showSweetAlert(
-        {
-          title: "Justificativa",
-          message: "Qual a justificativa para enviar para negociação?",
-          icon: "info",
-          input: true
-        })
-
-      if (mensagemEnvio.isConfirmed) {
-        this.utilsService.showSweetAlert(
-          {
-            title: "Sucesso!",
-            message: "A cotação foi enviada para o fornecedor!",
-            icon: "success"
-          })
-      }
-    }
+        action: () => this.actionsPropose.enviarPNegociacao(), 
+        icon: 'ph ph-x',
+        label: 'Negociar',
+      },
+    ];
   }
 
-  private definirQuantidade(): void {
-    this.utilsService.showSweetAlert(
+  private getAcoesDefinindoVencedor(): Array<PoTableAction> {
+    return [
       {
-        title: "Quantidade",
-        message: "Qual a quantidade desejada desse fornecedor?",
-        icon: "info",
-        input: true
-      })
+        action: () => this.actionsPropose.definirQuantidade(), 
+        label: 'Definir Quantidade',
+      },
+    ];
   }
+
+
+
+
 }
