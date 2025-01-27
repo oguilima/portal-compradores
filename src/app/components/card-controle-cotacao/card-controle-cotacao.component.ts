@@ -4,7 +4,7 @@ import {
   PoTableModule, PoDividerModule,
   PoWidgetModule, PoTableAction,
   PoButtonModule, PoModalModule,
-  PoModalComponent
+  PoModalComponent, PoFieldModule
 } from '@po-ui/ng-components';
 
 import { CardCotacaoComponent } from "../card-cotacao/card-cotacao.component"
@@ -18,7 +18,8 @@ import { Fornecedor } from '../../interfaces/fornecedor';
   selector: 'app-card-controle-cotacao',
   standalone: true,
   imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule,
-    PoWidgetModule, PoButtonModule, PoModalModule, CardCotacaoComponent
+    PoWidgetModule, PoButtonModule, PoModalModule, CardCotacaoComponent,
+    PoFieldModule
   ],
   templateUrl: './card-controle-cotacao.component.html',
   styleUrl: './card-controle-cotacao.component.css'
@@ -26,6 +27,7 @@ import { Fornecedor } from '../../interfaces/fornecedor';
 export class CardControleCotacaoComponent {
   @ViewChild('modalCotacoes') modalCotacoes!: PoModalComponent;
   @ViewChild('modalParecer') modalParecer!: PoModalComponent;
+  @ViewChild('modalEditCotacao') modalEditCotacao!: PoModalComponent;
   @Input() controleCotacao: boolean = true
   
   constructor(){}
@@ -114,5 +116,9 @@ export class CardControleCotacaoComponent {
 
   parecerTecnico(): void {
     this.modalParecer.open()
+  }
+
+  editCotacao(): void{
+    this.modalEditCotacao.open()
   }
 }

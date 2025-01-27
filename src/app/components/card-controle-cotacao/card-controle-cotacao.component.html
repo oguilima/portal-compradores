@@ -72,7 +72,7 @@
                 </po-button>
             </div>
             <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2">
-                <po-button p-label="Alterar Data de Validade" p-icon="ph ph-calendar">
+                <po-button (p-click)="editCotacao()" p-label="Alterar Data de Validade" p-icon="ph ph-calendar">
                 </po-button>
             </div>
             <div class="po-xl-2 po-lg-2 po-md-2 po-sm-2">
@@ -113,3 +113,11 @@
             </po-button>
         </po-modal-footer>
 </po-modal>
+
+
+<po-modal #modalEditCotacao p-title="Editando Cotação" p-size="md">
+    <po-datepicker name="datepicker" p-label="Data de Validade"> </po-datepicker>
+    <po-modal-footer [p-disabled-align]="false">
+      <po-button p-kind="primary" p-label="Confirmar"> </po-button>
+    </po-modal-footer>
+  </po-modal>
