@@ -41,16 +41,16 @@
         <po-divider></po-divider>
 
         <div class="po-row">
-            <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
+            <div *ngIf="!controleCotacao" class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
                 <po-button p-label="Validar Proposta" p-icon="ph ph-check"
                     p-kind="primary" (p-click)="validarProposta()"> </po-button>
             </div>
 
-            <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
+            <div *ngIf="!controleCotacao" class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
                 <po-button p-label="Negociar" p-icon="ph ph-x" (p-click)="enviarPNegociacao()"></po-button>
             </div>
 
-            <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
+            <div *ngIf="!controleCotacao" class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
                 <po-button p-label="Verificar Parecer Técnico"
                     p-icon="ph ph-hard-hat"></po-button>
             </div>

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import {
   PoListViewModule, PoInfoModule,
   PoTableModule, PoDividerModule,
@@ -26,6 +26,7 @@ import { Fornecedor } from '../../interfaces/fornecedor';
 export class CardControleCotacaoComponent {
   @ViewChild('modalCotacoes') modalCotacoes!: PoModalComponent;
   @ViewChild('modalParecer') modalParecer!: PoModalComponent;
+  @Input() controleCotacao: boolean = true
   
   constructor(){}
   
