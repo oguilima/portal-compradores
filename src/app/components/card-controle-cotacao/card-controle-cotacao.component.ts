@@ -13,6 +13,8 @@ import { InformacaoCotacao } from '../../interfaces/informacao-cotacao';
 import { Produto } from '../../interfaces/produto';
 import { Fornecedor } from '../../interfaces/fornecedor';
 
+import { UtilsService } from '../../utils/utils.service';
+
 
 @Component({
   selector: 'app-card-controle-cotacao',
@@ -29,9 +31,9 @@ export class CardControleCotacaoComponent {
   @ViewChild('modalParecer') modalParecer!: PoModalComponent;
   @ViewChild('modalEditCotacao') modalEditCotacao!: PoModalComponent;
   @Input() controleCotacao: boolean = true
-  
-  constructor(){}
-  
+
+  constructor(private utilsService: UtilsService) { }
+
   dados: Partial<InformacaoCotacao>[] = [
     {
       numCot: "00001",
@@ -118,7 +120,19 @@ export class CardControleCotacaoComponent {
     this.modalParecer.open()
   }
 
-  editCotacao(): void{
+  editCotacao(): void {
     this.modalEditCotacao.open()
+  }
+
+  async bloquearNovosParticipantes(): Promise<void> {
+    const inserirParecer = await this.utilsService.showSweetAlert({
+      title: "Parecer Técnico?",
+      message: "Deseja inserir parecer técnico para a cotação selecionada?",
+      icon: "warning"
+    })
+
+    if(inserirParecer.isConfirmed){
+      this.parecerTecnico()
+    }
   }
 }

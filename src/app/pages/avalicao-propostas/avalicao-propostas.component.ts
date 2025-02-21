@@ -188,7 +188,7 @@ export class AvalicaoPropostasComponent{
 
   actionsCotacao: Array<PoTableAction> = [
     { action: this.editCotacao.bind(this), icon: 'ph ph-pencil', label: 'Editar' },
-    { action: this.detailsCotacao.bind(this), icon: 'ph ph-book-open-text', label: 'Análisar Cotação' },
+    { action: this.detailsCotacao.bind(this), icon: 'ph ph-book-open-text', label: 'Analisar Cotação' },
     { action: () => { }, icon: 'ph ph-eye', label: 'Ver Itens' },
   ]
 

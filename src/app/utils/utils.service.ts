@@ -34,7 +34,7 @@ export class UtilsService {
         html: message,
         icon: icon,
         showCloseButton: true,
-        input: input ? 'text' : undefined, 
+        input: input ? 'text' : undefined,
         inputAttributes: {
           autocapitalize: 'off',
         },
@@ -52,8 +52,8 @@ export class UtilsService {
 
     } catch (error) {
       console.error('Erro ao exibir o SweetAlert:', error);
-      
-      return {isConfirmed: false, error: true, message: error}
+
+      return { isConfirmed: false, error: true, message: error }
 
     } finally {
       if (appRoot) {
