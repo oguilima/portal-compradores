@@ -1,29 +1,19 @@
-<po-list-view
-    p-property-title="name"
-    [p-items]="dados">
+<po-list-view p-property-title="name" [p-items]="dados">
     <ng-template p-list-view-content-template let-item>
         <div class="po-row">
 
             <div class="po-md-12">
                 <div class="po-row">
-                    <po-info class="po-md-2" p-label="Data Proposta"
-                        [p-value]="item.dataProposta"></po-info>
-                    <po-info class="po-md-2" p-label="Validade"
-                        [p-value]="item.validadeProposta"></po-info>
-                    <po-info class="po-md-2" p-label="Valor do Frete Total"
-                        [p-value]="item.valorFrete"></po-info>
-                    <po-info class="po-md-2" p-label="Saving"
-                        [p-value]="item.saving"></po-info>
-                    <po-info class="po-md-2" p-label="Tipo Frete"
-                        [p-value]="item.tipoFrete"></po-info>
-                    <po-info class="po-md-2" p-label="Cond. Pgto"
-                        [p-value]="item.condPgto"></po-info>
+                    <po-info class="po-md-2" p-label="Data Proposta" [p-value]="item.dataProposta"></po-info>
+                    <po-info class="po-md-2" p-label="Validade" [p-value]="item.validadeProposta"></po-info>
+                    <po-info class="po-md-2" p-label="Valor do Frete Total" [p-value]="item.valorFrete"></po-info>
+                    <po-info class="po-md-2" p-label="Saving" [p-value]="item.saving"></po-info>
+                    <po-info class="po-md-2" p-label="Tipo Frete" [p-value]="item.tipoFrete"></po-info>
+                    <po-info class="po-md-2" p-label="Cond. Pgto" [p-value]="item.condPgto"></po-info>
                 </div>
                 <div class="po-row">
-                    <po-info class="po-md-10" p-label="Observação Fornecedor"
-                        [p-value]="item.observacao"></po-info>
-                    <po-info class="po-md-2" p-label="Valor Total"
-                        [p-value]="item.valTotal"></po-info>
+                    <po-info class="po-md-10" p-label="Observação Fornecedor" [p-value]="item.observacao"></po-info>
+                    <po-info class="po-md-2" p-label="Valor Total" [p-value]="item.valTotal"></po-info>
                 </div>
             </div>
 
@@ -32,8 +22,7 @@
             </div>
 
             <div class="po-md-12">
-                <po-table [p-items]="itensCotacao" [p-columns]="columsItens"
-                    p-hide-columns-manager="true"
+                <po-table [p-items]="itensCotacao" [p-columns]="columsItens" p-hide-columns-manager="true"
                     p-container="border"></po-table>
             </div>
         </div>
@@ -42,26 +31,28 @@
 
         <div class="po-row">
             <div *ngIf="!controleCotacao" class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
-                <po-button p-label="Validar Proposta" p-icon="ph ph-check"
-                    p-kind="primary" (p-click)="validarProposta()"> </po-button>
+                <po-button p-size="100%" p-label="Validar Proposta" p-icon="ph ph-check" p-kind="primary"
+                    (p-click)="validarProposta()"> </po-button>
             </div>
 
             <div *ngIf="!controleCotacao" class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
-                <po-button p-label="Negociar" p-icon="ph ph-x" (p-click)="enviarPNegociacao()"></po-button>
+                <po-button p-size="100%" p-label="Negociar" p-icon="ph ph-x" (p-click)="enviarPNegociacao()"></po-button>
             </div>
 
             <div *ngIf="!controleCotacao" class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
-                <po-button p-label="Verificar Parecer Técnico"
-                    p-icon="ph ph-hard-hat"></po-button>
+                <po-button p-size="100%" p-label="Cancelar Proposta" p-icon="ph ph-x"></po-button>
+            </div>
+
+            <div *ngIf="!controleCotacao" class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
+                <po-button p-size="100%" p-label="Verificar Parecer Técnico" p-icon="ph ph-hard-hat"></po-button>
             </div>
 
             <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
-                <po-button p-label="Ver Anexos" p-icon="ph ph-eye"></po-button>
+                <po-button p-size="100%" p-label="Ver Anexos" p-icon="ph ph-eye"></po-button>
             </div>
 
             <div class="po-lg-2 po-xl-2 po-xl-2 po-lg-2 po-md-2 po-sm-2">
-                <po-button p-label="Ver Cotação/Negociação"
-                    p-icon="ph ph-eye"></po-button>
+                <po-button p-size="100%" p-label="Ver Cotação/Negociação" p-icon="ph ph-eye"></po-button>
             </div>
         </div>
 
