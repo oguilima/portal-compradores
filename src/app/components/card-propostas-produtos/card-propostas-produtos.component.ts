@@ -13,12 +13,11 @@ import { FornecedorVencedor } from '../../interfaces/fornecedor-vencedor';
 import { ActionsProposeService } from '../../services/actions-propose.service';
 
 @Component({
-  selector: 'app-card-propostas-produtos',
-  standalone: true,
-  imports: [CommonModule, PoListViewModule, PoInfoModule, PoTableModule,
-    PoDividerModule, PoButtonModule, PoFieldModule],
-  templateUrl: './card-propostas-produtos.component.html',
-  styleUrls: ['./card-propostas-produtos.component.css']
+    selector: 'app-card-propostas-produtos',
+    imports: [CommonModule, PoListViewModule, PoInfoModule, PoTableModule,
+        PoDividerModule, PoButtonModule, PoFieldModule],
+    templateUrl: './card-propostas-produtos.component.html',
+    styleUrls: ['./card-propostas-produtos.component.css']
 })
 export class CardPropostasProdutosComponent implements OnInit {
 
@@ -52,7 +51,7 @@ export class CardPropostasProdutosComponent implements OnInit {
               {
                 action: this.defineVencedor.bind(this),
                 color: this.isFavorite.bind(this),
-                icon: 'ph ph-crown',
+                icon: 'an an-crown',
                 tooltip: 'Vencedor',
                 value: 'winnerIcon',
               },
@@ -153,17 +152,17 @@ export class CardPropostasProdutosComponent implements OnInit {
     return [
       {
         action: () => this.actionsPropose.aprovarNegociacao(), 
-        icon: 'ph ph-check',
+        icon: 'an an-check',
         label: 'Validar Proposta',
       },
       {
         action: () => this.actionsPropose.enviarPNegociacao(), 
-        icon: 'ph ph-x',
+        icon: 'an an-x',
         label: 'Negociar',
       },
       {
         action: () => {}, 
-        icon: 'ph ph-hard-hat',
+        icon: 'an an-hard-hat',
         label: 'Verificar Parecer',
       }
     ];

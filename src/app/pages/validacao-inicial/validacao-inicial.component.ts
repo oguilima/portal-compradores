@@ -10,13 +10,12 @@ import {
 } from '@po-ui/ng-components';
 
 @Component({
-  selector: 'app-validacao-inicial',
-  standalone: true,
-  imports: [PoTableModule, PoButtonModule, PoSearchModule, ItensComprasComponent, PoModalModule,
-    PoFieldModule
-  ],
-  templateUrl: './validacao-inicial.component.html',
-  styleUrl: './validacao-inicial.component.css'
+    selector: 'app-validacao-inicial',
+    imports: [PoTableModule, PoButtonModule, PoSearchModule, ItensComprasComponent, PoModalModule,
+        PoFieldModule
+    ],
+    templateUrl: './validacao-inicial.component.html',
+    styleUrl: './validacao-inicial.component.css'
 })
 export class ValidacaoInicialComponent {
   @ViewChild('modalAprovacao') modalAprovacao!: PoModalComponent;
@@ -45,17 +44,17 @@ export class ValidacaoInicialComponent {
       property: 'etapa',
       type: 'label',
       labels: [
-        { value: 'validGestor', color: 'blue', label: 'Validação do Gestor', icon: "ph ph-user-check" },
-        { value: 'validOrc', color: ' #745678', label: 'Validação Orçamentária', icon: "ph ph-money-wavy" },
-        { value: 'validCompr', color: 'rgb(186, 79, 95)', label: 'Validação do Comprador', icon: 'ph ph-shopping-cart' }
+        { value: 'validGestor', color: 'blue', label: 'Validação do Gestor', icon: "an an-user-check" },
+        { value: 'validOrc', color: ' #745678', label: 'Validação Orçamentária', icon: "an an-money-wavy" },
+        { value: 'validCompr', color: 'rgb(186, 79, 95)', label: 'Validação do Comprador', icon: 'an an-shopping-cart' }
       ]
     },
     {
       property: 'status',
       type: 'label',
       labels: [
-        { value: 'andamento', color: 'rgb(190, 199, 58)', label: 'Em Andamento', icon: 'ph ph-minus' },
-        { value: 'pronto', color: 'green', label: 'Pronto p/ Validação', icon: 'ph ph-check' }
+        { value: 'andamento', color: 'rgb(190, 199, 58)', label: 'Em Andamento', icon: 'an an-minus' },
+        { value: 'pronto', color: 'green', label: 'Pronto p/ Validação', icon: 'an an-check' }
       ]
     }
   ]
@@ -116,8 +115,8 @@ export class ValidacaoInicialComponent {
   ]
 
   actions: Array<PoTableAction> = [
-    { action: this.aprovar.bind(this), icon: 'ph ph-check', label: 'Aprovar' },
-    { action: this.reprovar.bind(this), icon: 'po-icon ph ph-minus', label: 'Reprovar' }
+    { action: this.aprovar.bind(this), icon: 'an an-check', label: 'Aprovar' },
+    { action: this.reprovar.bind(this), icon: ' an an-minus', label: 'Reprovar' }
   ]
 
   aprovar() {

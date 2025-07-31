@@ -18,12 +18,11 @@ import { CommonModule } from '@angular/common';
 
 
 @Component({
-  selector: 'app-avalicao-propostas',
-  standalone: true,
-  imports: [PoTableModule, PoButtonModule, PoSearchModule, PoModalModule, PoFieldModule, PoTabsModule, PoDividerModule,
-    PoWidgetModule, CardCotacaoComponent, CardPropostasProdutosComponent, CommonModule],
-  templateUrl: './avalicao-propostas.component.html',
-  styleUrl: './avalicao-propostas.component.css'
+    selector: 'app-avalicao-propostas',
+    imports: [PoTableModule, PoButtonModule, PoSearchModule, PoModalModule, PoFieldModule, PoTabsModule, PoDividerModule,
+        PoWidgetModule, CardCotacaoComponent, CardPropostasProdutosComponent, CommonModule],
+    templateUrl: './avalicao-propostas.component.html',
+    styleUrl: './avalicao-propostas.component.css'
 })
 export class AvalicaoPropostasComponent{
   @ViewChild('modalAnalises') modalAnalises!: PoModalComponent;
@@ -96,9 +95,9 @@ export class AvalicaoPropostasComponent{
     { property: 'cgcFornec', label: "CGC" },
     {
       property: 'TipoFornec', type: 'label', labels: [
-        { value: 'F', color: 'blue', label: 'Fisico', icon: "ph ph-user" },
-        { value: 'J', color: ' #745678', label: 'Juridico', icon: "ph ph-building-apartment" },
-        { value: 'X', color: 'rgb(186, 79, 95)', label: 'Outros', icon: 'ph ph-dots-three' }
+        { value: 'F', color: 'blue', label: 'Fisico', icon: "an an-user" },
+        { value: 'J', color: ' #745678', label: 'Juridico', icon: "an an-building-apartment" },
+        { value: 'X', color: 'rgb(186, 79, 95)', label: 'Outros', icon: 'an an-dots-three' }
       ]
     }
   ];
@@ -187,10 +186,10 @@ export class AvalicaoPropostasComponent{
 
 
   actionsCotacao: Array<PoTableAction> = [
-    { action: this.editCotacao.bind(this), icon: 'ph ph-pencil', label: 'Editar' },
-    { action: this.detailsCotacao.bind(this), icon: 'ph ph-book-open-text', label: 'Analisar Cotação' },
-    { action: () => { }, icon: 'ph ph-eye', label: 'Ver Itens' },
-    { action: () => { }, icon: 'ph ph-x', label: 'Cancelar Solicitação' },
+    { action: this.editCotacao.bind(this), icon: 'an an-pencil', label: 'Editar' },
+    { action: this.detailsCotacao.bind(this), icon: 'an an-book-open-text', label: 'Analisar Cotação' },
+    { action: () => { }, icon: 'an an-eye', label: 'Ver Itens' },
+    { action: () => { }, icon: 'an an-x', label: 'Cancelar Solicitação' },
   ]
 
   actionsPorFornecedor: Array<PoTableAction> = [

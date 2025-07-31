@@ -7,21 +7,20 @@ import { PoToolbarModule } from '@po-ui/ng-components';
 import { PoPageModule } from '@po-ui/ng-components';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [PoMenuModule, PoToolbarModule, PoPageModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [MenuResourcesService]
+    selector: 'app-root',
+    imports: [PoMenuModule, PoToolbarModule, PoPageModule, RouterOutlet],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    providers: [MenuResourcesService]
 })
 export class AppComponent {
   menuItemSelected: string = "";
 
   menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.getMenuAction('/'), icon: 'ph ph-house', shortLabel: 'Home' },
+    { label: 'Home', action: this.getMenuAction('/'), icon: 'an an-house', shortLabel: 'Home' },
     {
       label: 'Acompanhamento',
-      icon: 'ph ph-shopping-cart-simple',
+      icon: 'an an-shopping-cart-simple',
       shortLabel: 'Acompanhamento',
       subItems: [
         { label: 'Cotações', action: this.getMenuAction('/cotacoes'), badge: { value: 12 } },
@@ -30,31 +29,31 @@ export class AppComponent {
     }, {
       label: 'Validação Inicial',
       action: this.getMenuAction('/validacaoInicial'),
-      icon: 'ph ph-check',
+      icon: 'an an-check',
       shortLabel: 'Validação Inicial',
       badge: { value: 4 }
     }, {
       label: 'Controle de Cotações',
       action: this.getMenuAction('/controleCotacao'),
-      icon: 'ph ph-flag',
+      icon: 'an an-flag',
       shortLabel: 'Controle de Cotaçõe',
       badge: { value: 5 }
     }, /*{
       label: 'Parecer Técnico',
       action: this.getMenuAction('/parecerTecnico'),
-      icon: 'ph ph-hard-hat',
+      icon: 'an an-hard-hat',
       shortLabel: 'Parecer Técnico',
       badge: { value: 2 }
     },*/ {
       label: 'Avaliação de Propostas',
       action: this.getMenuAction('/avaliacaoPropostas'),
-      icon: 'ph ph-currency-dollar',
+      icon: 'an an-currency-dollar',
       shortLabel: 'Avaliação de Propostas',
       badge: { value: 5 }
     }, {
       label: 'Definir Vencedor Cotação',
       action: this.getMenuAction('/propostaVencedora'),
-      icon: 'ph ph-crown',
+      icon: 'an an-crown',
       shortLabel: 'Definir Vencedor Cotação',
       badge: { value: 6 }
     }

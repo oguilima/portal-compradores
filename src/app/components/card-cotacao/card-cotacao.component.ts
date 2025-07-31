@@ -12,13 +12,12 @@ import { InformacaoCotacao } from '../../interfaces/informacao-cotacao';
 import { ActionsProposeService } from '../../services/actions-propose.service';
 
 @Component({
-  selector: 'app-card-cotacao',
-  standalone: true,
-  imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule, PoButtonModule,
-    CommonModule
-  ],
-  templateUrl: './card-cotacao.component.html',
-  styleUrl: './card-cotacao.component.css'
+    selector: 'app-card-cotacao',
+    imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule, PoButtonModule,
+        CommonModule
+    ],
+    templateUrl: './card-cotacao.component.html',
+    styleUrl: './card-cotacao.component.css'
 })
 export class CardCotacaoComponent {
 

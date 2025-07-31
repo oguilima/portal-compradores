@@ -17,14 +17,13 @@ import { UtilsService } from '../../utils/utils.service';
 
 
 @Component({
-  selector: 'app-card-controle-cotacao',
-  standalone: true,
-  imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule,
-    PoWidgetModule, PoButtonModule, PoModalModule, CardCotacaoComponent,
-    PoFieldModule
-  ],
-  templateUrl: './card-controle-cotacao.component.html',
-  styleUrl: './card-controle-cotacao.component.css'
+    selector: 'app-card-controle-cotacao',
+    imports: [PoListViewModule, PoInfoModule, PoTableModule, PoDividerModule,
+        PoWidgetModule, PoButtonModule, PoModalModule, CardCotacaoComponent,
+        PoFieldModule
+    ],
+    templateUrl: './card-controle-cotacao.component.html',
+    styleUrl: './card-controle-cotacao.component.css'
 })
 export class CardControleCotacaoComponent {
   @ViewChild('modalCotacoes') modalCotacoes!: PoModalComponent;
